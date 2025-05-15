@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 // About page
 router.get('/about', (req, res) => {
-  res.render('pages/about', {
+  res.render('views/pages/about', {
     user: req.session.user || null,
     title: 'About'
   });
