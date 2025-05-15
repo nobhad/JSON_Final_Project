@@ -14,9 +14,9 @@
     <p>&copy; <%= new Date().getFullYear() %> No Bhad Dogs. All rights reserved.</p>
 
     <% if (user) { %>
-      <p>Hello, <%= user.username %>! <a href="/logout">Logout</a></p>
+      <p>Hello, <%= user.firstName %>! <a href="/auth/logout">Logout</a></p>
     <% } else { %>
-      <p><a href="/login">Login</a> or <a href="/register">Register</a> to book services or leave testimonials.</p>
+      <p><a href="/auth/login">Login</a> or <a href="/auth/register">Register</a> to book services or leave testimonials.</p>
     <% } %>
 
     <div class="footer-contact">
@@ -31,4 +31,3 @@
 
   </div>
 </footer>
-

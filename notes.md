@@ -8,8 +8,7 @@ final/
 │ ├── contactController.js
 │ ├── dashboardController.js
 │ ├── portfolioController.js
-│ ├── testimonialController.js
-│ └── userController.js
+│ └── testimonialController.js
 │
 ├── middleware/ # Custom middleware for auth, sessions, flash messages, file uploads
 │ ├── authMiddleware.js
@@ -54,7 +53,7 @@ final/
 │ ├── pages/ # Static/general pages
 │ │ ├── about.ejs
 │ │ ├── contact.ejs
-│ │ ├── dashboard.ejs
+│ │ ├── halloffame.ejs
 │ │ └── notfound.ejs
 │ │
 │ ├── partials/ # Partial templates for layout (header, footer, navbar, scripts)

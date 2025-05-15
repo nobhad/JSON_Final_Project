@@ -1,19 +1,24 @@
-// File: /routes/authRoutes.js
-// Purpose: Handles user registration, login, logout
+/*
+  File: /routes/authRoutes.js
+  Purpose: Auth routes (register, login, logout)
+  Notes:
+  - Uses email as username (unique login)
+  - Shows login and register forms, processes authentication
+  - Redirects after register/login to dashboard
+  - Logout destroys session and redirects to login
+*/
 
 const express = require('express');
 const router = express.Router();
-const UserController = require('../controllers/userController');
 
-// Registration page
-router.get('/register', UserController.showRegister);
-router.post('/register', UserController.registerUser);
+const authController = require('../controllers/authController');
 
-// Login page
-router.get('/login', UserController.showLogin);
-router.post('/login', UserController.loginUser);
+router.get('/register', authController.showRegister);
+router.post('/register', authController.register);
 
-// Logout
-router.get('/logout', UserController.logoutUser);
+router.get('/login', authController.showLogin);
+router.post('/login', authController.login);
+
+router.get('/logout', authController.logout);
 
 module.exports = router;

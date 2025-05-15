@@ -1,5 +1,13 @@
-// File: /index.js
-// Purpose: Main app entry point; sets up Express, session, middleware, connects routes, and starts server
+/*
+  File: /index.js
+  Purpose: Main app entry point; sets up Express, session, middleware, connects routes, and starts server
+  Notes:
+  - Loads environment variables from .env
+  - Uses express-ejs-layouts for templating
+  - Mounts routes with appropriate prefixes
+  - Serves static files from /public
+  - Uses email as unique login identifier (no username)
+*/
 
 require('dotenv').config();
 const express = require('express');
@@ -57,13 +65,16 @@ app.use('/', mainRoutes);
 app.use('/booking', bookingRoutes);
 app.use('/testimonials', testimonialRoutes);
 app.use('/contact', contactRoutes);
-app.use('/dashboard', dashboardRoutes);
+app.use('/dashboard', dashboardRoutes); 
 
 // --- Redirect helper routes ---
 app.get('/book', (req, res) => res.redirect('/booking/book'));
-app.get('/login', (req, res) => res.redirect('/auth/login'));
 app.get('/register', (req, res) => res.redirect('/auth/register'));
 
+// --- Redirect /logout to /auth/logout ---
+app.get('/logout', (req, res) => {
+  res.redirect('/auth/logout');
+});
 
 // --- Start server ---
 const PORT = process.env.PORT || 3000;

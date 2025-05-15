@@ -1,24 +1,25 @@
-// File: /controllers/dashboardController.js
-// Purpose: Controller for handling user dashboard page
+/* 
+  File: /controllers/dashboardController.js
+  Purpose: Controller logic for dashboard routes
+  Notes:
+  - Assumes user is authenticated
+  - Fetches bookings and testimonials for the logged-in user
+*/
 
-const Testimonial = require('../models/Testimonial');
 const Booking = require('../models/Booking');
+const Testimonial = require('../models/Testimonial');
 
 exports.getDashboard = async (req, res) => {
   try {
-    const userId = req.session.user.id;
+    const userId = req.session.user._id; 
 
-    // Fetch testimonials for this user, sorted newest first
-    const testimonials = await Testimonial.find({ user: userId }).sort({ createdAt: -1 });
+    // Fetch user's bookings and testimonials
+    const bookings = await Booking.find({ user: userId }).lean();
+    const testimonials = await Testimonial.find({ user: userId }).lean();
 
-    // Fetch bookings for this user, sorted by preferredDate or createdAt descending
-    const bookings = await Booking.find({ customerEmail: req.session.user.email }).sort({ preferredDate: -1 });
-
-    // Render dashboard view with both datasets
-    res.render('pages/dashboard', { testimonials, bookings });
-  } catch (err) {
-    console.error('Dashboard load error:', err);
-    res.render('pages/dashboard', { testimonials: [], bookings: [], error: 'Failed to load dashboard' });
+    res.render('dashboard/dashboard', { bookings, testimonials, title: 'Dashboard' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
   }
 };
-

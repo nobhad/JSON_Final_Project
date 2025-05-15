@@ -16,7 +16,6 @@
   <title><%= typeof title !== 'undefined' ? title + ' | No Bhad Dogs' : 'No Bhad Dogs' %></title>
 
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/navbar.css" />
 
   <%- include('header') %>
 </head>
@@ -29,5 +28,14 @@
 
   <%- include('footer') %>
   <%- include('scripts') %>
+
+    <!-- fade out flash after animation completes -->
+  <script>
+    setTimeout(() => {
+      const flash = document.querySelector('.flash');
+      if (flash) flash.remove();
+    }, 5000); // same as animation duration
+  </script>
+
 </body>
 </html>

@@ -1,18 +1,35 @@
-<!-- File: /views/auth/login.ejs -->
-<!-- Purpose: Page for existing users to log in -->
+<!--
+  File: /views/auth/login.ejs
+  Purpose: Login form for existing users
+  Notes:
+  - Uses email and password to authenticate
+  - Displays flash messages if any
+-->
 
 <main class="container">
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required>
-  
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-  
-      <button type="submit">Login</button>
-    </form>
+  <h1>User Login</h1>
 
-    <p>Don't have an account? <a href="/auth/register">Register here</a></p>
-  </main>
-  
+  <% if (flash && flash.error) { %>
+    <% flash.error.forEach(msg => { %>
+      <div class="flash error"><%= msg %></div>
+    <% }) %>
+  <% } %>  
+
+  <% if (flash && flash.success) { %>
+    <% flash.success.forEach(msg => { %>
+      <div class="flash success"><%= msg %></div>
+    <% }) %>
+  <% } %>
+
+  <form action="/auth/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p>Don't have an account? <a href="/auth/register">Register here</a></p>
+</main>

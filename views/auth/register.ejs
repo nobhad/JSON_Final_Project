@@ -1,27 +1,38 @@
-<!-- File: /views/auth/register.ejs -->
+<!--
+  File: /views/auth/register.ejs
+  Purpose: Registration form for new users
+  Notes:
+  - Email is used as username (no separate username input)
+  - Password confirmation field included
+-->
 
-    <main class="container">
-        <h2>Create an Account</h2>
+<main class="container">
+  <h2>Create an Account</h2>
 
-        <form action="/auth/register" method="POST">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required />
+  <% if (flash && flash.error) { %>
+    <% flash.error.forEach(msg => { %>
+      <div class="flash error"><%= msg %></div>
+    <% }) %>
+  <% } %>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required />
+  <form action="/auth/register" method="POST">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
 
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
 
-        <button type="submit">Register</button>
-        </form>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required />
 
-      
-        <p>Already have an account? <a href="/auth/login">Login here</a></p>
-      </main>
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account? <a href="/auth/login">Login here</a></p>
+</main>
