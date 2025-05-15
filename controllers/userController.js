@@ -1,3 +1,6 @@
+// File: /controllers/userController.js
+// Purpose: Controller functions for user auth (register, login, logout)
+
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -8,50 +11,48 @@ exports.showRegister = (req, res) => {
 
 // Handle user registration
 exports.registerUser = async (req, res) => {
-    const { firstName, lastName, phone, address, email, password, confirmPassword } = req.body;
-  
-    if (!firstName || !lastName || !phone || !address || !email || !password || !confirmPassword) {
-      return res.render('auth/register', { error: 'All fields are required.' });
+  const { firstName, lastName, email, password, confirmPassword } = req.body;
+
+  // Validate required fields 
+  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    return res.render('auth/register', { error: 'All fields are required.' });
+  }
+
+  if (password !== confirmPassword) {
+    return res.render('auth/register', { error: 'Passwords do not match.' });
+  }
+
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.render('auth/register', { error: 'Email already registered.' });
     }
-  
-    if (password !== confirmPassword) {
-      return res.render('auth/register', { error: 'Passwords do not match.' });
-    }
-  
-    try {
-      const existingUser = await User.findOne({ email });
-      if (existingUser) {
-        return res.render('auth/register', { error: 'Email already registered.' });
-      }
-  
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      const newUser = new User({
-        username: email,  // username is email
-        firstName,
-        lastName,
-        phone,
-        address,
-        email,
-        password: hashedPassword,
-      });
-  
-      await newUser.save();
-  
-      req.session.user = {
-        id: newUser._id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        email: newUser.email,
-      };
-  
-      res.redirect('/');
-    } catch (err) {
-      console.error(err);
-      res.render('auth/register', { error: 'An error occurred, please try again.' });
-    }
-  };
-  
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      username: email,  // username is email
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
+
+    await newUser.save();
+
+    req.session.user = {
+      id: newUser._id,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      email: newUser.email,
+    };
+
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    res.render('auth/register', { error: 'An error occurred, please try again.' });
+  }
+};
 
 // Show login form
 exports.showLogin = (req, res) => {
@@ -76,7 +77,7 @@ exports.loginUser = async (req, res) => {
     if (!match) {
       return res.render('auth/login', { error: 'Invalid email or password.' });
     }
-    
+
     req.session.user = {
       id: user._id,
       firstName: user.firstName,

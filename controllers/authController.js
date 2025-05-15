@@ -8,16 +8,23 @@ exports.showRegister = (req, res) => {
 };
 
 exports.register = async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    const user = new User({ username, email, password });
-    await user.save();
-    req.session.userId = user._id;
-    res.redirect('/');
-  } catch (err) {
-    res.status(400).send('Registration error. Maybe username/email already taken.');
-  }
-};
+    try {
+      const { firstName, lastName, email, password, confirmPassword } = req.body;
+  
+      if (password !== confirmPassword) {
+        return res.status(400).send("Passwords do not match.");
+      }
+  
+      const user = new User({ firstName, lastName, email, password });
+      await user.save();
+      req.session.userId = user._id;
+      res.redirect('/');
+    } catch (err) {
+      console.error(err);
+      res.status(400).send('Registration error. Maybe email is already taken.');
+    }
+  };
+  
 
 exports.showLogin = (req, res) => {
   res.render('auth/login');
@@ -26,9 +33,11 @@ exports.showLogin = (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+
   if (!user || !(await user.comparePassword(password))) {
     return res.status(400).send('Invalid credentials.');
   }
+
   req.session.userId = user._id;
   res.redirect('/');
 };

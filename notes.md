@@ -48,6 +48,9 @@ final/
 │ │ └── book.ejs
 │ │ └── thankyou.ejs
 │ │
+│ ├── dashboard/ # User dashboard pages
+│ │ ├── dashboard.ejs
+│ │
 │ ├── pages/ # Static/general pages
 │ │ ├── about.ejs
 │ │ ├── contact.ejs
