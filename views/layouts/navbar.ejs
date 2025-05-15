@@ -1,0 +1,23 @@
+<!-- File: /views/layouts/navbar.ejs -->
+<!-- Purpose: Navigation bar partial, includes links and login/logout based on session -->
+
+<nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/portfolio">Favorite Dogs</a></li>
+      <li><a href="/testimonials">Testimonials</a></li>
+      <li><a href="/booking">Book Service</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  
+    <ul class="auth-links">
+      <% if (session && session.user) { %>
+        <li>Welcome, <%= session.user.username %>!</li>
+        <li><a href="/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  

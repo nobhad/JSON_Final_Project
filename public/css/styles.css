@@ -1,0 +1,109 @@
+/* File: /public/styles/style.css */
+/* Purpose: Base styles for No Bhad Dogs site, using Bice Blue as background */
+
+:root {
+    --color-black: #000101;
+    --color-bice-blue: #2b6e97;
+    --color-saffron: #eebe08;
+    --color-lapis-lazuli: #0f628d;
+    --color-fire-brick: #b11e23;
+    --color-white: #fff;
+    --color-light-blue: #9cc8e3;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bice-blue);
+    color: var(--color-white);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  a {
+    color: var(--color-saffron);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover,
+  a:focus {
+    color: var(--color-light-blue);
+    outline: none;
+  }
+  
+  header, footer {
+    background-color: var(--color-lapis-lazuli);
+    padding: 1rem 2rem;
+    text-align: center;
+    color: var(--color-white);
+    flex-shrink: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  nav ul li {
+    font-weight: 600;
+  }
+  
+  main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  button, input[type="submit"] {
+    background-color: var(--color-saffron);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-black);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover, input[type="submit"]:hover {
+    background-color: var(--color-fire-brick);
+    color: var(--color-white);
+  }
+  
+  .flash {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  .flash.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Responsive nav */
+  @media (max-width: 600px) {
+    nav ul {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  

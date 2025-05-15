@@ -1,0 +1,97 @@
+// File: /controllers/userController.js
+// Purpose: Controller functions for user auth (register, login, logout)
+
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+
+// Show registration form
+exports.showRegister = (req, res) => {
+  res.render('register', { error: null });
+};
+
+// Handle user registration
+exports.registerUser = async (req, res) => {
+  const { username, email, password, confirmPassword } = req.body;
+
+  if (!username || !email || !password || !confirmPassword) {
+    return res.render('register', { error: 'All fields are required.' });
+  }
+  if (password !== confirmPassword) {
+    return res.render('register', { error: 'Passwords do not match.' });
+  }
+
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.render('register', { error: 'Email already registered.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
+    await newUser.save();
+
+    req.session.user = {
+      id: newUser._id,
+      username: newUser.username,
+      email: newUser.email,
+    };
+
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    res.render('register', { error: 'An error occurred, please try again.' });
+  }
+};
+
+// Show login form
+exports.showLogin = (req, res) => {
+  res.render('login', { error: null });
+};
+
+// Handle login
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.render('login', { error: 'Email and password are required.' });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.render('login', { error: 'Invalid email or password.' });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.render('login', { error: 'Invalid email or password.' });
+    }
+
+    req.session.user = {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    };
+
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    res.render('login', { error: 'An error occurred, please try again.' });
+  }
+};
+
+// Handle logout
+exports.logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+    }
+    res.redirect('/');
+  });
+};
