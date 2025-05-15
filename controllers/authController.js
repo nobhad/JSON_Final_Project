@@ -42,6 +42,8 @@ exports.register = async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName
     };
+    // Add userId for easy reference
+    req.session.userId = user._id.toString();
 
     req.flash('success', 'Registration successful');
     res.redirect('/dashboard');
@@ -87,6 +89,8 @@ exports.login = async (req, res) => {
       firstName: user.firstName,
       lastName: user.lastName
     };
+    // Add userId for easy reference
+    req.session.userId = user._id.toString();
 
     req.flash('success', 'Logged in successfully');
     res.redirect('/dashboard');

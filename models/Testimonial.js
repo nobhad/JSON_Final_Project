@@ -1,13 +1,27 @@
-// File: /models/Testimonial.js
-// Purpose: Testimonial schema to store user testimonials with reference to User
+/**
+ * File: /models/Testimonial.js
+ * Purpose: Mongoose schema/model for testimonial documents.
+ * Notes:
+ * - Stores testimonial content, optional image filename, and user reference.
+ */
 
 const mongoose = require('mongoose');
 
 const testimonialSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  content: { type: String, required: true },
-  image: { type: String }, // store the filename or path
-  createdAt: { type: Date, default: Date.now }
+  content: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Testimonial', testimonialSchema);

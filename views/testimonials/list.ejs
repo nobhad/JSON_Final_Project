@@ -2,34 +2,44 @@
   File: /views/testimonials/list.ejs
   Purpose: Display a list of testimonials
   Notes:
-  - Expects a variable `testimonials` (array of testimonial objects) passed from the controller.
-  - Each testimonial should display title, content, and optionally image.
-  - Include links to edit/delete testimonials if user is authorized.
+  - `testimonials` array passed from route
+  - Uses global `user` variable from res.locals.user
+  - Show "Add New Testimonial" link only if user is logged in
 -->
 
-
 <main>
-  <h1>User Testimonials</h1>
-  <% if (testimonials && testimonials.length > 0) { %>
-    <ul>
-      <% testimonials.forEach(testimonial => { %>
-        <li>
-          <h2><%= testimonial.title %></h2>
-          <p><%= testimonial.content %></p>
-          <% if (testimonial.imageUrl) { %>
-            <img src="<%= testimonial.imageUrl %>" alt="Image for <%= testimonial.title %>" width="200" />
-          <% } %>
+  <h1>Client Testimonials</h1>
 
-          <a href="/testimonials/edit/<%= testimonial._id %>">Edit</a> |
-          <form action="/testimonials/delete/<%= testimonial._id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure?');">
-            <button type="submit">Delete</button>
-          </form>
-        </li>
+  <% if (testimonials && testimonials.length > 0) { %>
+    <div class="testimonial-list">
+      <% testimonials.forEach(testimonial => { %>
+        <div class="testimonial-item">
+          <h2><%= testimonial.title %></h2>
+          <% if (testimonial.image) { %>
+            <img src="/uploads/<%= testimonial.image %>" alt="Image for testimonial" width="200" />
+          <% } %>   
+          <div><%- testimonial.content %></div>       
+        </div>
       <% }) %>
-    </ul>
+    </div>
   <% } else { %>
     <p>No testimonials found.</p>
   <% } %>
-  <a href="/testimonials/new">Add New Testimonial</a>
+
+  <% if (user) { %>
+    <a href="/testimonials/new">Leave a Testimonial</a>
+  <% } %>
 </main>
 
+<style>
+  /* remove bullet styling */
+  .testimonial-list {
+    padding: 0;
+    margin: 0;
+  }
+  .testimonial-item {
+    margin-bottom: 2em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+  }
+</style>

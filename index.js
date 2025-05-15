@@ -52,6 +52,13 @@ app.set('layout', 'partials/layout'); // default layout path
 // --- Serve static files ---
 app.use(express.static(path.join(__dirname, 'public')));
 
+// --- MIDDLEWARE TO PASS USER TO ALL VIEWS GLOBALLY ---
+// This avoids having to manually pass user to each res.render call.
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 // --- Import and mount routes ---
 const authRoutes = require('./routes/authRoutes');
 const mainRoutes = require('./routes/mainRoutes');

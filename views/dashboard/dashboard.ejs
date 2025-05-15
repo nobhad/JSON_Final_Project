@@ -35,9 +35,13 @@
     <% testimonials.forEach(testimonial => { %>
       <li>
         <strong>Submitted on:</strong> <%= testimonial.createdAt ? testimonial.createdAt.toDateString() : 'N/A' %><br />
-        <em><%= testimonial.content %></em><br />
+        <div><%- testimonial.content %></div><br />
         <a href="/testimonials/edit/<%= testimonial._id %>">Edit</a>
+        <form action="/testimonials/delete/<%= testimonial._id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this testimonial?');">
+          <button type="submit">Delete</button>
+        </form>
       </li>
     <% }) %>
   </ul>
 <% } %>
+

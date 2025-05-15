@@ -23,9 +23,10 @@ final/
 │ └── User.js
 │
 ├── public/ # Public assets served statically (CSS, JS, images)
-│ ├── footer.css
+│ ├── css/
+│ │ ├── footer.css
+│ │ ├── styles.css
 │ ├── navbar.js
-│ ├── styles.css
 │ └── img/
 │ └── ... (images)
 │

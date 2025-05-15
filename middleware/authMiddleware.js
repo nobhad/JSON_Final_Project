@@ -7,11 +7,12 @@
 */
 
 function ensureAuth(req, res, next) {
-  if (req.session && req.session.user) {
+  // check if session.userId exists for auth
+  if (req.session && req.session.userId) {
     return next();
   } else {
-    req.flash('error', 'Please log in to book a service');
-    return res.redirect('/auth/login');  // redirect instead of next()
+    req.flash('error', 'You must be logged in to view this page');
+    return res.redirect('/auth/login');
   }
 }
 
