@@ -62,6 +62,8 @@ app.use('/dashboard', dashboardRoutes);
 // --- Redirect helper routes ---
 app.get('/book', (req, res) => res.redirect('/booking/book'));
 app.get('/login', (req, res) => res.redirect('/auth/login'));
+app.get('/register', (req, res) => res.redirect('/auth/register'));
+
 
 // --- Start server ---
 const PORT = process.env.PORT || 3000;

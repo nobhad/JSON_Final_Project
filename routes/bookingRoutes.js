@@ -12,6 +12,12 @@ router.get('/book', ensureAuth, bookingController.showBookingForm);
 // Submission requires login
 router.post('/book', ensureAuth, bookingController.submitBooking);
 
+// Edit bookings requires login
+router.get('/edit/:id', ensureAuth, bookingController.editBookingForm);
+router.post('/edit/:id', ensureAuth, bookingController.updateBooking);
+router.post('/delete/:id', ensureAuth, bookingController.deleteBooking);
+
+
 // Thank you page
 router.get('/thankyou', (req, res) => {
   res.render('booking/thankyou');

@@ -57,3 +57,73 @@ exports.submitBooking = async (req, res) => {
     res.status(500).send('Something went wrong. Please try again.');
   }
 };
+
+
+// Show edit form for a booking
+exports.editBookingForm = async (req, res) => {
+    try {
+      const booking = await Booking.findById(req.params.id);
+      if (!booking) {
+        return res.status(404).send('Booking not found');
+      }
+  
+      // Optional: check if current user is authorized to edit
+      if (booking.customerEmail !== req.session.user.email) {
+        return res.status(403).send('Unauthorized');
+      }
+  
+      res.render('booking/edit', { booking });
+    } catch (err) {
+      console.error('Error loading booking edit form:', err);
+      res.status(500).send('Server error');
+    }
+  };
+  
+  // Handle update of booking
+  exports.updateBooking = async (req, res) => {
+    try {
+      const { serviceType, preferredDate, notes } = req.body;
+  
+      const booking = await Booking.findById(req.params.id);
+      if (!booking) {
+        return res.status(404).send('Booking not found');
+      }
+  
+      if (booking.customerEmail !== req.session.user.email) {
+        return res.status(403).send('Unauthorized');
+      }
+  
+      // Update fields
+      booking.serviceType = serviceType;
+      booking.preferredDate = preferredDate;
+      booking.notes = notes;
+  
+      await booking.save();
+      res.redirect('/dashboard');
+    } catch (err) {
+      console.error('Error updating booking:', err);
+      res.status(500).send('Server error');
+    }
+  };
+
+  // Delete a booking
+exports.deleteBooking = async (req, res) => {
+    try {
+      const booking = await Booking.findById(req.params.id);
+      if (!booking) {
+        return res.status(404).send('Booking not found');
+      }
+  
+      // Opnly allow deleting your own booking
+      if (booking.customerEmail !== req.session.user.email) {
+        return res.status(403).send('Unauthorized');
+      }
+  
+      await booking.deleteOne();
+      res.redirect('/dashboard');
+    } catch (err) {
+      console.error('Error deleting booking:', err);
+      res.status(500).send('Server error');
+    }
+  };
+  

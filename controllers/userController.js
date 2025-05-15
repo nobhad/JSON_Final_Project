@@ -8,51 +8,50 @@ exports.showRegister = (req, res) => {
 
 // Handle user registration
 exports.registerUser = async (req, res) => {
-  // Destructure all fields including new ones
-  const { firstName, lastName, phone, address, email, password, confirmPassword } = req.body;
-
-  // Validate required fields
-  if (!firstName || !lastName || !phone || !address || !email || !password || !confirmPassword) {
-    return res.render('auth/register', { error: 'All fields are required.' });
-  }
-
-  if (password !== confirmPassword) {
-    return res.render('auth/register', { error: 'Passwords do not match.' });
-  }
-
-  try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.render('auth/register', { error: 'Email already registered.' });
+    const { firstName, lastName, phone, address, email, password, confirmPassword } = req.body;
+  
+    if (!firstName || !lastName || !phone || !address || !email || !password || !confirmPassword) {
+      return res.render('auth/register', { error: 'All fields are required.' });
     }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Save all fields in newUser
-    const newUser = new User({
-      firstName,
-      lastName,
-      phone,
-      address,
-      email,
-      password: hashedPassword,
-    });
-
-    await newUser.save();
-
-    req.session.user = {
-      id: newUser._id,
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email,
-    };
-
-    res.redirect('/');
-  } catch (err) {
-    console.error(err);
-    res.render('auth/register', { error: 'An error occurred, please try again.' });
-  }
-};
+  
+    if (password !== confirmPassword) {
+      return res.render('auth/register', { error: 'Passwords do not match.' });
+    }
+  
+    try {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.render('auth/register', { error: 'Email already registered.' });
+      }
+  
+      const hashedPassword = await bcrypt.hash(password, 10);
+  
+      const newUser = new User({
+        username: email,  // username is email
+        firstName,
+        lastName,
+        phone,
+        address,
+        email,
+        password: hashedPassword,
+      });
+  
+      await newUser.save();
+  
+      req.session.user = {
+        id: newUser._id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+      };
+  
+      res.redirect('/');
+    } catch (err) {
+      console.error(err);
+      res.render('auth/register', { error: 'An error occurred, please try again.' });
+    }
+  };
+  
 
 // Show login form
 exports.showLogin = (req, res) => {

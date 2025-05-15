@@ -1,4 +1,4 @@
-// File: /routes/cdashboardRoutes.js - routes for user dashboard page
+// File: /routes/dashboardRoutes.js - routes for user dashboard page
 
 const express = require('express');
 const router = express.Router();
