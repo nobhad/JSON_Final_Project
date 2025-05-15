@@ -1,7 +1,7 @@
 // File: /controllers/contactController.js
-// Purpose: Handle appointment request form submission and display contact page with WYSIWYG editor
+// Purpose: Handle booking request form submission and display contact page
 
-const Appointment = require('../models/Appointment');
+const Booking = require('../models/Booking');
 
 exports.showContactForm = (req, res) => {
   res.render('contact', { user: req.session.userId });
@@ -11,14 +11,14 @@ exports.submitContactForm = async (req, res) => {
   try {
     const { name, email, service, message } = req.body;
 
-    const appointment = new Appointment({
-      name,
-      email,
-      service,
-      message
+    const booking = new Booking({
+      customerName: name,
+      customerEmail: email,
+      serviceType: service,
+      notes: message
     });
 
-    await appointment.save();
+    await booking.save();
 
     res.render('contact', { success: 'Appointment request sent successfully!', user: req.session.userId });
   } catch (err) {

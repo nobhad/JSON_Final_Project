@@ -1,10 +1,12 @@
-// navbar.js - toggle mobile menu
+// navbar.js - toggles mobile navigation menu
 
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.querySelector('.nav-toggle');
+    const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
   
-    toggleButton.addEventListener('click', () => {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+      navToggle.setAttribute('aria-expanded', !expanded);
       navMenu.classList.toggle('active');
     });
   });
