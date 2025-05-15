@@ -1,0 +1,31 @@
+<!-- dashboard.ejs - user dashboard view -->
+
+<h1>Welcome to your dashboard</h1>
+
+<h2>Your bookings</h2>
+<% if (bookings.length === 0) { %>
+  <p>no bookings found.</p>
+<% } else { %>
+  <ul>
+    <% bookings.forEach(booking => { %>
+      <li>
+        <strong>date:</strong> <%= booking.date.toDateString() %> |
+        <strong>details:</strong> <%= booking.details %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<h2>Your testimonials</h2>
+<% if (testimonials.length === 0) { %>
+  <p>no testimonials found.</p>
+<% } else { %>
+  <ul>
+    <% testimonials.forEach(testimonial => { %>
+      <li>
+        <strong>submitted on:</strong> <%= testimonial.createdAt.toDateString() %><br />
+        <em><%= testimonial.content %></em>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

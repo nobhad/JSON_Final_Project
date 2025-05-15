@@ -60,6 +60,9 @@ const flashMiddleware = require('./middleware/flashMiddleware');
 
 app.use(flashMiddleware.flash);
 
+const dashboardRoutes = require('./routes/dashboardRoutes');
+
+app.use('/', dashboardRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
