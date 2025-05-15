@@ -1,0 +1,25 @@
+.site-footer {
+    background-color: #222;
+    color: #eee;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+  }
+  
+  .site-footer a {
+    color: #58a6ff;
+    text-decoration: none;
+    margin: 0 0.3rem;
+  }
+  
+  .site-footer a:hover,
+  .site-footer a:focus {
+    text-decoration: underline;
+  }
+  
+  .footer-contact,
+  .footer-social {
+    margin-top: 0.5rem;
+  }
+  

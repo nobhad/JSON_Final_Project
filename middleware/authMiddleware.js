@@ -1,11 +1,14 @@
 // File: /middleware/authMiddleware.js
-// Purpose: Middleware to protect routes that require user authentication
+// Purpose: Middleware to protect routes that require login
 
-exports.ensureAuth = (req, res, next) => {
-    if (req.session.userId) {
-      next();
+function ensureAuth(req, res, next) {
+    if (req.session && req.session.user) {
+      return next();
     } else {
-      res.redirect('/login');
+      req.flash('error', 'Please log in to book a service');
+      return res.redirect('/login');
     }
-  };
+  }
+  
+  module.exports = { ensureAuth };
   

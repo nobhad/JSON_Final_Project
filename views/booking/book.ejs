@@ -1,0 +1,41 @@
+<!-- 
+  File: /views/booking/book.ejs
+  Purpose: Renders the dog care service booking form
+  Notes:
+  - Uses common header, navbar, footer, and scripts partials
+  - Form posts to /book with required fields
+-->
+
+<%- include('layouts/header') %>
+<%- include('layouts/navbar') %>
+
+<main class="container">
+  <h1>Book a Service</h1>
+  <form action="/book" method="POST">
+    <label for="customerName">Name:</label>
+    <input type="text" id="customerName" name="customerName" required>
+
+    <label for="customerEmail">Email:</label>
+    <input type="email" id="customerEmail" name="customerEmail" required>
+
+    <label for="serviceType">Service:</label>
+    <select id="serviceType" name="serviceType" required>
+      <option value="">Select a service</option>
+      <option value="Dog Walking">Dog Walking</option>
+      <option value="Overnight Care">Overnight Care</option>
+      <option value="Training">Training</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="preferredDate">Preferred Date:</label>
+    <input type="date" id="preferredDate" name="preferredDate" required>
+
+    <label for="notes">Additional Notes:</label>
+    <textarea id="notes" name="notes"></textarea>
+
+    <button type="submit">Submit Booking</button>
+  </form>
+</main>
+
+<%- include('layouts/footer') %>
+<%- include('layouts/scripts') %>

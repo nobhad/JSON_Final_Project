@@ -1,0 +1,33 @@
+<!-- 
+  File: /views/partials/layout.ejs
+  Purpose: Base HTML structure for all pages
+  Notes:
+  - Includes standard layout structure (doctype, head, body)
+  - Loads common partials: header, navbar, footer, and scripts
+  - body will be replaced by the specific page content
+  - Use with express-ejs-layouts or manually render by wrapping views
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title + ' | No Bhad Dogs' : 'No Bhad Dogs' %></title>
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+
+  <%- include('header') %>
+</head>
+<body>
+  <%- include('navbar') %>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <%- include('footer') %>
+  <%- include('scripts') %>
+</body>
+</html>

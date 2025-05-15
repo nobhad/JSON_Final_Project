@@ -5,7 +5,7 @@ const Booking = require('../models/Booking');
 
 // Show booking form
 exports.showBookingForm = (req, res) => {
-  res.render('book');
+  res.render('booking/book');
 };
 
 // Handle booking form submission
@@ -22,7 +22,7 @@ exports.submitBooking = async (req, res) => {
     });
 
     await newBooking.save();
-    res.redirect('/thankyou');
+    res.redirect('pages/thankyou');
   } catch (err) {
     console.error('Error submitting booking:', err);
     res.status(500).send('Something went wrong. Please try again.');

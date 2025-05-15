@@ -1,31 +1,39 @@
-<!-- File: /views/testimonials/new.ejs -->
-<!-- Purpose: Testimonial submission form, only accessible to logged-in users -->
+<!-- 
+  File: /views/testimonials/new.ejs
+  Purpose: Form for registered users to submit testimonials with WYSIWYG editor and image upload
+  Notes:
+  - Full HTML page (optional: could be adapted to layout)
+-->
 
-<%- include('../layouts/header') %>
-<%- include('../layouts/navbar') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit Testimonial</title>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({ selector: '#content' });
+  </script>
+</head>
+<body>
+  <h1>Submit a Testimonial</h1>
 
-<main class="p-6 max-w-xl mx-auto">
-  <h1 class="text-2xl font-bold mb-4">Leave a Testimonial</h1>
+  <% if (success) { %>
+    <p style="color: green;"><%= success %></p>
+  <% } %>
 
-  <form action="/testimonials" method="POST">
-    <div class="mb-4">
-      <label for="title" class="block font-semibold">Title</label>
-      <input type="text" name="title" id="title" class="w-full border p-2 rounded" required>
-    </div>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
 
-    <div class="mb-4">
-      <label for="content" class="block font-semibold">Your Testimonial</label>
-      <textarea name="content" id="editor" class="w-full border p-2 rounded" rows="5" required></textarea>
-    </div>
+  <form action="/testimonials" method="POST" enctype="multipart/form-data">
+    <label for="content">Your Testimonial:</label><br/>
+    <textarea id="content" name="content" rows="10" cols="50" required></textarea><br/><br/>
 
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+    <label for="image">Upload an image:</label><br/>
+    <input type="file" name="image" accept="image/*" /><br/><br/>
+
+    <button type="submit">Submit</button>
   </form>
-</main>
-
-<!-- Include WYSIWYG editor -->
-<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
-<script>
-  CKEDITOR.replace('editor');
-</script>
-
-<%- include('../layouts/footer') %>
+</body>
+</html>

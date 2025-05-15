@@ -1,0 +1,30 @@
+<!-- 
+  File: /views/pages/notfound.ejs
+  Purpose: Display a 404 Not Found error page
+  Notes:
+  - Full HTML page shown when route is not found
+  - Simple user-friendly message and link back to home
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Page Not Found</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>404 - Page Not Found</h1>
+  </header>
+
+  <main>
+    <p>Sorry, the page you are looking for does not exist.</p>
+    <a href="/">Return to Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> No Bhad Dogs</p>
+  </footer>
+</body>
+</html>

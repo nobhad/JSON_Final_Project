@@ -1,0 +1,38 @@
+<!--
+  File: /views/testimonials/list.ejs
+  Purpose: Display a list of testimonials
+  Notes:
+  - Expects a variable `testimonials` (array of testimonial objects) passed from the controller.
+  - Each testimonial should display title, content, and optionally image.
+  - Include links to edit/delete testimonials if user is authorized.
+-->
+
+<%- include('../layouts/header') %>
+<%- include('../layouts/navbar') %>
+
+<main>
+  <h1>User Testimonials</h1>
+  <% if (testimonials && testimonials.length > 0) { %>
+    <ul>
+      <% testimonials.forEach(testimonial => { %>
+        <li>
+          <h2><%= testimonial.title %></h2>
+          <p><%= testimonial.content %></p>
+          <% if (testimonial.imageUrl) { %>
+            <img src="<%= testimonial.imageUrl %>" alt="Image for <%= testimonial.title %>" width="200" />
+          <% } %>
+
+          <a href="/testimonials/edit/<%= testimonial._id %>">Edit</a> |
+          <form action="/testimonials/delete/<%= testimonial._id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No testimonials found.</p>
+  <% } %>
+  <a href="/testimonials/new">Add New Testimonial</a>
+</main>
+
+<%- include('../layouts/footer') %>

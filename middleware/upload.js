@@ -1,3 +1,6 @@
+// File: /middleware/upload.js
+// Purpose: Middleware for handling file uploads using multer
+
 const multer = require('multer');
 const path = require('path');
 

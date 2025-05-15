@@ -1,11 +1,21 @@
 // File: /routes/contactRoutes.js
-// Purpose: Routes for contact page with form and WYSIWYG editor; submit appointment requests to MongoDB
+// Purpose: Defines routes for contact page with query submission
 
 const express = require('express');
 const router = express.Router();
-const contactController = require('../controllers/contactController');
 
-router.get('/', contactController.showContactForm);
-router.post('/', contactController.submitContactForm);
+router.get('/', (req, res) => {
+  res.render('contact', { user: req.session.user });
+});
+
+router.post('/', (req, res) => {
+  // Example: handle contact form submission
+  const { name, email, message } = req.body;
+
+  // TODO: Add logic to save the message, send email, or whatever is needed
+
+  req.flash('success', 'Your message has been sent. Thank you!');
+  res.redirect('/contact');
+});
 
 module.exports = router;

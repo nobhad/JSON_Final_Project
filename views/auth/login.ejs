@@ -1,21 +1,16 @@
 <!-- File: /views/auth/login.ejs -->
 <!-- Purpose: Page for existing users to log in -->
 
-<%- include('../layouts/header') %>
-<%- include('../layouts/navbar') %>
-
 <main class="container">
-  <h1>Login</h1>
-  <form action="/login" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required>
-
-    <button type="submit">Login</button>
-  </form>
-</main>
-
-<%- include('../layouts/footer') %>
-<%- include('../layouts/scripts') %>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+  
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+  
+      <button type="submit">Login</button>
+    </form>
+  </main>
+  

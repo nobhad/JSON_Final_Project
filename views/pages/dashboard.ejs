@@ -1,0 +1,22 @@
+<!-- 
+  File: /views/pages/dashboard.ejs
+  Purpose: User dashboard displaying submitted testimonials with edit links
+  Notes:
+  - Renders inside the main layout (no full HTML)
+  - Expects 'testimonials' array passed in
+-->
+
+<h2>Your testimonials</h2>
+<% if (!testimonials || testimonials.length === 0) { %>
+  <p>No testimonials found.</p>
+<% } else { %>
+  <ul>
+    <% testimonials.forEach(testimonial => { %>
+      <li>
+        <strong>Submitted on:</strong> <%= testimonial.createdAt ? testimonial.createdAt.toDateString() : 'N/A' %><br />
+        <em><%= testimonial.content %></em><br />
+        <a href="/testimonials/edit/<%= testimonial._id %>">Edit</a>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

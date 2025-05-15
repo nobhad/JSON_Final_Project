@@ -1,0 +1,25 @@
+<!-- File: /views/testimonials/edit.ejs -->
+<!-- Purpose: Form view for editing or deleting an existing testimonial -->
+
+<h1>Edit Testimonial</h1>
+
+<form action="/testimonials/edit/<%= testimonial._id %>" method="POST" enctype="multipart/form-data">
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title" value="<%= testimonial.title %>" required><br><br>
+
+  <label for="content">Content:</label><br>
+  <textarea id="content" name="content" rows="5" cols="50" required><%= testimonial.content %></textarea><br><br>
+
+  <!-- Optional image update field -->
+  <!-- <label for="image">Update Image:</label><br>
+  <input type="file" id="image" name="image"><br><br> -->
+
+  <button type="submit">Update Testimonial</button>
+</form>
+
+<!-- Delete button form -->
+<form action="/testimonials/delete/<%= testimonial._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this testimonial?');" style="margin-top: 20px;">
+  <button type="submit" style="background-color: red; color: white;">Delete Testimonial</button>
+</form>
+
+<a href="/dashboard">Cancel</a>

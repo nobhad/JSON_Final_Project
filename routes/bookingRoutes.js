@@ -4,16 +4,9 @@
 const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
+const { ensureAuth } = require('../middleware/authMiddleware');
 
-// middleware to protect routes
-function ensureAuthenticated(req, res, next) {
-  if (req.session && req.session.userId) {
-    return next();
-  }
-  res.redirect('/login');
-}
-
-router.get('/book', ensureAuthenticated, bookingController.showBookingForm);
-router.post('/book', ensureAuthenticated, bookingController.submitBooking);
+router.get('/', ensureAuth, bookingController.showBookingForm);
+router.post('/', ensureAuth, bookingController.submitBooking);
 
 module.exports = router;

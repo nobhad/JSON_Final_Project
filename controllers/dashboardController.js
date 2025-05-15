@@ -1,4 +1,5 @@
-// dashboardController.js - controller logic for user dashboard
+// File: /controllers/dashboardController.js
+// Purpose: Controller for handling user dashboard page
 
 const Booking = require('../models/Booking');
 const Testimonial = require('../models/Testimonial');
@@ -10,7 +11,7 @@ exports.getDashboard = async (req, res) => {
     const bookings = await Booking.find({ user: userId }).lean();
     const testimonials = await Testimonial.find({ user: userId }).lean();
 
-    res.render('dashboard', {
+    res.render('pages/dashboard', {
       title: 'Your dashboard',
       bookings,
       testimonials

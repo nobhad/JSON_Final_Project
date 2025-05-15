@@ -4,7 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const testimonialController = require('../controllers/testimonialController');
-const upload = require('../middleware/upload'); // Multer for image uploads
+const upload = require('../middleware/upload'); // multer middleware
 
 // Middleware to restrict access
 function ensureLoggedIn(req, res, next) {
@@ -12,15 +12,25 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login');
 }
 
-// GET: New testimonial form
-router.get('/testimonials/new', ensureLoggedIn, testimonialController.newForm);
+// New testimonial form
+router.get('/new', ensureLoggedIn, testimonialController.newForm);
 
-// POST: Submit testimonial with image upload
+// Submit new testimonial with image upload
 router.post(
-  '/testimonials',
+  '/',
   ensureLoggedIn,
-  upload.single('image'), // handle single image file
+  upload.single('image'),
   testimonialController.createTestimonial
 );
+
+// Edit testimonial form
+router.get('/edit/:id', ensureLoggedIn, testimonialController.showEditForm);
+
+// Submit testimonial update
+router.post('/edit/:id', ensureLoggedIn, testimonialController.updateTestimonial);
+
+// POST route to delete testimonial
+router.post('/delete/:id', ensureLoggedIn, testimonialController.deleteTestimonial);
+
 
 module.exports = router;

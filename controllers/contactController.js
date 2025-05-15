@@ -20,8 +20,8 @@ exports.submitContactForm = async (req, res) => {
 
     await booking.save();
 
-    res.render('contact', { success: 'Appointment request sent successfully!', user: req.session.userId });
+    res.render('pages/contact', { success: 'Appointment request sent successfully!', user: req.session.userId });
   } catch (err) {
-    res.render('contact', { error: 'Error sending request.', user: req.session.userId });
+    res.render('pages/contact', { error: 'Error sending request.', user: req.session.userId });
   }
 };

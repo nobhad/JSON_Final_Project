@@ -9,7 +9,7 @@ exports.showPortfolio = (req, res) => {
       { name: 'Charlie', breed: 'Beagle', image: '/images/dogs/charlie.jpg' }
     ];
   
-    res.render('portfolio', { dogs, user: req.session.userId });
+    res.render('portfolio/portfolio', { dogs, user: req.session.userId });
   };
 
   

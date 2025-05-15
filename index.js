@@ -1,11 +1,12 @@
 // File: /index.js
-// Purpose: Main app entry point; sets up Express, session, middleware, connects routes and starts server
+// Purpose: Main app entry point; sets up Express, session, middleware, connects routes, and starts server
 
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const mongoose = require('mongoose');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
@@ -40,10 +41,14 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// --- Use express-ejs-layouts ---
+app.use(expressLayouts);
+app.set('layout', 'partials/layout'); // layout file at views/partials/layout.ejs
+
 // --- Serve static files ---
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- Route imports ---
+// --- Import routes ---
 const authRoutes = require('./routes/authRoutes');
 const mainRoutes = require('./routes/mainRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
@@ -53,13 +58,15 @@ const contactRoutes = require('./routes/contactRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 
 // --- Mount routes ---
-app.use('/', authRoutes);
+// Auth routes mounted on /auth (e.g., /auth/login)
+app.use('/auth', authRoutes);
+// General site pages (home, about, etc)
 app.use('/', mainRoutes);
-app.use('/', bookingRoutes);
-app.use('/', portfolioRoutes);
-app.use('/', testimonialRoutes);
-app.use('/', contactRoutes);
-app.use('/', dashboardRoutes);
+app.use('/booking', bookingRoutes);
+app.use('/portfolio', portfolioRoutes);
+app.use('/testimonials', testimonialRoutes);
+app.use('/contact', contactRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 // --- Start server ---
 const PORT = process.env.PORT || 3000;

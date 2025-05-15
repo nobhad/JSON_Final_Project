@@ -1,38 +1,13 @@
 <!-- File: /views/index.ejs -->
-<!-- Purpose: Homepage with navbar, welcome message, and links -->
+<!-- Purpose: Homepage content only, used inside layout.ejs -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>No Bhad Dogs - Home</title>
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <%- include('layouts/navbar') %>
+<h1>Welcome to No Bhad Dogs!</h1>
+<p>Your trusted dog care site with appointments, testimonials, and more.</p>
 
-  <main>
-    <h1>Welcome to No Bhad Dogs!</h1>
-    <p>Your trusted dog care site with appointments, testimonials, and more.</p>
+<% if (user) { %>
+  <p>Hello, <%= user.username %>! <a href="/logout">Logout</a></p>
+<% } else { %>
+  <p><a href="/login">Login</a> or <a href="/register">Register</a> to book services or leave testimonials.</p>
+<% } %>
 
-    <% if (user) { %>
-      <p>Hello, <%= user.username %>! <a href="/logout">Logout</a></p>
-    <% } else { %>
-      <p><a href="/login">Login</a> or <a href="/register">Register</a> to book services or leave testimonials.</p>
-    <% } %>
 
-    <section>
-      <h2>Explore</h2>
-      <ul>
-        <li><a href="/portfolio">Our Favorite Dogs</a></li>
-        <li><a href="/booking">Book a Service</a></li>
-        <li><a href="/testimonials">Testimonials</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <%- include('layouts/footer') %>
-</body>
-</html>
