@@ -1,24 +1,32 @@
 <!-- File: /views/auth/register.ejs -->
-<!-- Purpose: Page for new user registration -->
 
-<%- include('../layouts/header') %>
-<%- include('../layouts/navbar') %>
-
-<main class="container">
-  <h1>Register</h1>
-  <form action="/register" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required>
-
-    <button type="submit">Register</button>
-  </form>
-</main>
-
-<%- include('../layouts/footer') %>
-<%- include('../layouts/scripts') %>
+    <main class="container">
+        <h1>Register</h1>
+      
+        <form action="/auth/register" method="POST">
+          <label for="firstName">First Name:</label>
+          <input type="text" name="firstName" id="firstName" required>
+      
+          <label for="lastName">Last Name:</label>
+          <input type="text" name="lastName" id="lastName" required>
+      
+          <label for="phone">Phone Number:</label>
+          <input type="tel" name="phone" id="phone" required pattern="[0-9\-+\s()]{7,}" title="Enter a valid phone number">
+      
+          <label for="address">Address:</label>
+          <input type="text" name="address" id="address" required>
+      
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" required>
+      
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" required>
+      
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" name="confirmPassword" id="confirmPassword" required>
+      
+          <button type="submit">Register</button>
+        </form>
+      
+        <p>Already have an account? <a href="/auth/login">Login here</a></p>
+      </main>

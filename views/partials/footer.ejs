@@ -10,7 +10,14 @@
 
 <footer class="site-footer">
   <div class="footer-content container">
+
     <p>&copy; <%= new Date().getFullYear() %> No Bhad Dogs. All rights reserved.</p>
+
+    <% if (user) { %>
+      <p>Hello, <%= user.username %>! <a href="/logout">Logout</a></p>
+    <% } else { %>
+      <p><a href="/login">Login</a> or <a href="/register">Register</a> to book services or leave testimonials.</p>
+    <% } %>
 
     <div class="footer-contact">
       <p>Contact us: <a href="mailto:contact@nobhad.com">contact@nobhad.com</a> | Phone: (555) 123-4567</p>
@@ -21,5 +28,7 @@
       <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a> |
       <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
     </div>
+
   </div>
 </footer>
+

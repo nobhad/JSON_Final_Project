@@ -1,6 +1,3 @@
-// File: /controllers/userController.js
-// Purpose: Controller functions for user auth (register, login, logout)
-
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -11,11 +8,14 @@ exports.showRegister = (req, res) => {
 
 // Handle user registration
 exports.registerUser = async (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
+  // Destructure all fields including new ones
+  const { firstName, lastName, phone, address, email, password, confirmPassword } = req.body;
 
-  if (!username || !email || !password || !confirmPassword) {
+  // Validate required fields
+  if (!firstName || !lastName || !phone || !address || !email || !password || !confirmPassword) {
     return res.render('auth/register', { error: 'All fields are required.' });
   }
+
   if (password !== confirmPassword) {
     return res.render('auth/register', { error: 'Passwords do not match.' });
   }
@@ -28,8 +28,12 @@ exports.registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Save all fields in newUser
     const newUser = new User({
-      username,
+      firstName,
+      lastName,
+      phone,
+      address,
       email,
       password: hashedPassword,
     });
@@ -38,7 +42,8 @@ exports.registerUser = async (req, res) => {
 
     req.session.user = {
       id: newUser._id,
-      username: newUser.username,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
       email: newUser.email,
     };
 
@@ -75,7 +80,8 @@ exports.loginUser = async (req, res) => {
     
     req.session.user = {
       id: user._id,
-      username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
     };
 

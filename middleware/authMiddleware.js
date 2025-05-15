@@ -6,7 +6,7 @@ function ensureAuth(req, res, next) {
       return next();
     } else {
       req.flash('error', 'Please log in to book a service');
-      return res.redirect('/login');
+      return next(); 
     }
   }
   

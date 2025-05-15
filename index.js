@@ -10,13 +10,9 @@ const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
-// --- Connect to MongoDB ---
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+// Connect to MongoDB
+const connectDB = require('./config/db');
+connectDB();
 
 // --- Session setup ---
 app.use(session({
@@ -26,7 +22,7 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
 
-// --- Session-related middleware ---
+// --- Middleware for session + flash ---
 const sessionMiddleware = require('./middleware/sessionMiddleware');
 app.use(sessionMiddleware.attachSessionToViews);
 
@@ -43,30 +39,29 @@ app.set('views', path.join(__dirname, 'views'));
 
 // --- Use express-ejs-layouts ---
 app.use(expressLayouts);
-app.set('layout', 'partials/layout'); // layout file at views/partials/layout.ejs
+app.set('layout', 'partials/layout'); // default layout path
 
 // --- Serve static files ---
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- Import routes ---
+// --- Import and mount routes ---
 const authRoutes = require('./routes/authRoutes');
 const mainRoutes = require('./routes/mainRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
-const portfolioRoutes = require('./routes/portfolioRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 
-// --- Mount routes ---
-// Auth routes mounted on /auth (e.g., /auth/login)
 app.use('/auth', authRoutes);
-// General site pages (home, about, etc)
 app.use('/', mainRoutes);
 app.use('/booking', bookingRoutes);
-app.use('/portfolio', portfolioRoutes);
 app.use('/testimonials', testimonialRoutes);
 app.use('/contact', contactRoutes);
 app.use('/dashboard', dashboardRoutes);
+
+// --- Redirect helper routes ---
+app.get('/book', (req, res) => res.redirect('/booking/book'));
+app.get('/login', (req, res) => res.redirect('/auth/login'));
 
 // --- Start server ---
 const PORT = process.env.PORT || 3000;

@@ -46,13 +46,13 @@ final/
 │ │
 │ ├── booking/ # Booking-related views
 │ │ └── book.ejs
+│ │ └── thankyou.ejs
 │ │
 │ ├── pages/ # Static/general pages
 │ │ ├── about.ejs
 │ │ ├── contact.ejs
 │ │ ├── dashboard.ejs
-│ │ ├── notfound.ejs
-│ │ └── thankyou.ejs
+│ │ └── notfound.ejs
 │ │
 │ ├── partials/ # Partial templates for layout (header, footer, navbar, scripts)
 │ │ ├── footer.ejs
