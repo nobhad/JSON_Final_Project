@@ -1,4 +1,18 @@
-## Project Root (`/final`)
+## Project Root (`/Noelle_Bhaduri_JSON_Final_Project`)
+
+Noelle_Bhaduri_JSON_Final_Project/
+├── index.html          ← Home page
+├── portfolio.html      ← Portfolio (Hall of Fame + Testimonials)
+├── contact.html        ← Contact form
+├── style.css           ← Shared CSS
+├── script.js           ← Shared JavaScript
+├── db.json             ← Stores contact form data
+├── weather.js          ← Weather API logic
+├── external.json       ← Simulated external JSON data
+└── assets/             ← Images and other media
+
+
+
 
 final/
 │
