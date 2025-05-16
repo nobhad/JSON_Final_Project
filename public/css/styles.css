@@ -240,3 +240,61 @@ form textarea {
 form input[type="submit"] {
   width: 100%;
 }
+
+
+/* Container for testimonial buttons */
+.testimonial-actions {
+  margin-top: auto; /* push buttons to bottom if card grows */
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+/* Reset default form inline styling spacing */
+.testimonial-actions form {
+  margin: 0;
+  padding: 0;
+}
+
+/* Edit button styled similarly to delete but with different color */
+.btn-edit {
+  background-color: var(--color-bice-blue); /* blue color for edit */
+  color: var(--color-white);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover,
+.btn-edit:focus {
+  background-color: var(--color-lapis-lazuli);
+  outline: none;
+}
+
+/* Delete button with red background and no extra space */
+.btn-delete {
+  background-color: var(--color-fire-brick);
+  color: var(--color-white);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover,
+.btn-delete:focus {
+  background-color: #8a1418; /* darker red on hover */
+  outline: none;
+}
+
+/* Remove margin/padding around buttons so only the shape is visible */
+button.btn-edit,
+button.btn-delete {
+  margin: 0;
+  display: inline-block;
+}
