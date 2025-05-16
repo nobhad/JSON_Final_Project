@@ -29,7 +29,7 @@ final/
 │ │ ├── styles.css
 │ ├── navbar.js
 │ └── img/
-│ └── ... (images)
+│ └── logo.png
 │
 ├── routes/ # Express route definitions, organized by feature
 │ ├── authRoutes.js
@@ -62,8 +62,7 @@ final/
 │ │ ├── footer.ejs
 │ │ ├── header.ejs
 │ │ ├── layout.ejs
-│ │ ├── navbar.ejs
-│ │ └── scripts.ejs
+│ │ └── navbar.ejs
 │ │
 │ ├── testimonials/ # Testimonial views (list, new, edit)
 │ │ ├── edit.ejs

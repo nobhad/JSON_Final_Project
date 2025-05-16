@@ -137,3 +137,11 @@
     padding: 0.5rem 0;
   }
 }
+
+/* logo image inside nav */
+.logo-img {
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
