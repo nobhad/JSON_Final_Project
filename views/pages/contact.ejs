@@ -6,30 +6,56 @@
   - Uses 'user' and 'messages' objects passed from the controller
 -->
 
-<h1>Contact Us</h1>
+<main>
+  <h1>Contact Us</h1>
 
-<p>Reach us at: <strong>contact@nobhad.com</strong> or call <strong>555-123-4567</strong></p>
+  <p>Reach us at: <strong>contact@nobhad.com</strong> or call <strong>555-123-4567</strong></p>
 
+  <h2>Send us a message</h2>
 
-<h2>Send us a message</h2>
+  <% if (flash && flash.error && flash.error.length > 0) { %>
+    <div style="background-color: #c0392b; color: white; padding: 10px; border-radius: 5px; margin-bottom: 1em;">
+      <%= flash.error[0] %>
+    </div>
+  <% } %>
+  
+  <% if (flash && flash.success && flash.success.length > 0) { %>
+    <div style="background-color: #27ae60; color: white; padding: 10px; border-radius: 5px; margin-bottom: 1em;">
+      <%= flash.success[0] %>
+    </div>
+  <% } %>
+  
 
-<% if (messages && messages.error) { %>
-  <div style="color: red;"><%= messages.error %></div>
-<% } %>
-
-<% if (messages && messages.success) { %>
-  <div style="color: green;"><%= messages.success %></div>
-<% } %>
-
-<form method="POST" action="/contact">
-  <label for="name">Name:</label><br />
-  <input type="text" id="name" name="name" required /><br /><br />
-
-  <label for="email">Email:</label><br />
-  <input type="email" id="email" name="email" required /><br /><br />
-
-  <label for="message">Message:</label><br />
-  <textarea id="message" name="message" rows="5" required></textarea><br /><br />
-
-  <button type="submit">Send</button>
-</form>
+  <form method="POST" action="/contact" novalidate>
+    <label for="name">Name:</label><br />
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      required 
+      pattern="^[^<>]*$" 
+      title="Name cannot contain < or > characters" 
+    /><br /><br />
+  
+    <label for="email">Email:</label><br />
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required 
+    /><br /><br />
+  
+    <label for="message">Message:</label><br />
+    <textarea 
+      id="message" 
+      name="message" 
+      rows="5" 
+      required 
+      pattern="^[^<>]*$" 
+      title="Message cannot contain < or > characters"
+    ></textarea><br /><br />
+  
+    <button type="submit">Send</button>
+  </form>
+  
+</main>

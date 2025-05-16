@@ -1,27 +1,57 @@
 // File: /controllers/contactController.js
-// Purpose: Handle booking request form submission and display contact page
+// Purpose: To handle the contact form submission and display the contact form
+// Notes:
+// - Uses ContactRequest model
+// - Stores and retrieves flash messages for success and error
+// - Adds server-side validation to check for valid inputs and prevent scripts
 
-const Booking = require('../models/Booking');
+const ContactRequest = require('../models/ContactRequest');
 
 exports.showContactForm = (req, res) => {
-  res.render('contact', { user: req.session.userId });
+  res.render('pages/contact', {
+    user: req.session.user,
+    flash: req.flash(), 
+  });
 };
 
 exports.submitContactForm = async (req, res) => {
   try {
-    const { name, email, service, message } = req.body;
+    const { name, email, message } = req.body;
 
-    const booking = new Booking({
-      customerName: name,
-      customerEmail: email,
-      serviceType: service,
-      notes: message
-    });
+    const errors = [];
 
-    await booking.save();
+    // Reject < or > characters to help prevent scripts
+    const disallowedPattern = /[<>]/;
 
-    res.render('pages/contact', { success: 'Appointment request sent successfully!', user: req.session.userId });
+    if (!name || disallowedPattern.test(name.trim())) {
+      errors.push('Please enter a valid name without < or > characters.');
+    }
+
+    // Basic email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      errors.push('Please enter a valid email address.');
+    }
+
+    if (!message || disallowedPattern.test(message.trim())) {
+      errors.push('Please enter a valid message without < or > characters.');
+    }
+
+    // If errors, set flash error messages and redirect back to form
+    if (errors.length > 0) {
+      errors.forEach(err => req.flash('error', err));
+      return res.redirect('/contact');
+    }
+
+    // Save valid contact request
+    const contactRequest = new ContactRequest({ name, email, message });
+    await contactRequest.save();
+
+    req.flash('success', 'Message sent successfully!');
+    res.redirect('/contact');
   } catch (err) {
-    res.render('pages/contact', { error: 'Error sending request.', user: req.session.userId });
+    console.error(err);
+    req.flash('error', 'Error sending message. Please try again.');
+    res.redirect('/contact');
   }
 };

@@ -1,5 +1,6 @@
 // File: /models/ContactRequest.js
 // Purpose: Mongoose model for storing contact requests from users
+// Notes: Message field stores raw HTML or plain text
 
 const mongoose = require('mongoose');
 
@@ -15,7 +16,7 @@ const contactRequestSchema = new mongoose.Schema({
     trim: true
   },
   message: {
-    type: String,  // This will hold WYSIWYG HTML content
+    type: String,
     required: true
   },
   submittedAt: {
