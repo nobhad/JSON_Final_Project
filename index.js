@@ -9,7 +9,7 @@
   - Uses email as unique login identifier (no username)
 */
 
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -18,72 +18,72 @@ const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
-// Connect to MongoDB
-const connectDB = require('./config/db');
-connectDB();
+// --- Connect to MongoDB ---
+const connectDB = require('./config/db'); // custom database connection module
+connectDB(); // call the function to connect
 
 // --- Session setup ---
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'yourSecretKeyHere',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
+  secret: process.env.SESSION_SECRET || 'yourSecretKeyHere', // session secret from .env
+  resave: false, // don’t resave if nothing is modified
+  saveUninitialized: false, // don’t save empty sessions
+  cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day in milliseconds
 }));
 
-// --- Middleware for session + flash ---
-const sessionMiddleware = require('./middleware/sessionMiddleware');
+// --- Middleware for session + flash messaging ---
+const sessionMiddleware = require('./middleware/sessionMiddleware'); // attaches user to views
 app.use(sessionMiddleware.attachSessionToViews);
 
-const flashMiddleware = require('./middleware/flashMiddleware');
+const flashMiddleware = require('./middleware/flashMiddleware'); // flash messages
 app.use(flashMiddleware.flash);
 
 // --- Middleware for parsing form data and JSON ---
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // for form submissions
+app.use(express.json()); // for JSON data
 
 // --- Set EJS as the view engine and views directory ---
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs'); // set template engine
+app.set('views', path.join(__dirname, 'views')); // point to /views folder
 
 // --- Use express-ejs-layouts ---
-app.use(expressLayouts);
-app.set('layout', 'partials/layout'); // default layout path
+app.use(expressLayouts); // enable layout support
+app.set('layout', 'partials/layout'); // default layout file
 
-// --- Serve static files ---
+// --- Serve static files from /public ---
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- MIDDLEWARE TO PASS USER TO ALL VIEWS GLOBALLY ---
-// This avoids having to manually pass user to each res.render call.
+// --- Middleware to make user data available in all views ---
+// This avoids needing to pass user in each res.render() call manually
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
   next();
 });
 
 // --- Import and mount routes ---
-const authRoutes = require('./routes/authRoutes');
-const mainRoutes = require('./routes/mainRoutes');
-const bookingRoutes = require('./routes/bookingRoutes');
-const testimonialRoutes = require('./routes/testimonialRoutes');
-const contactRoutes = require('./routes/contactRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes');
+const authRoutes = require('./routes/authRoutes'); // handles login/register/logout
+const mainRoutes = require('./routes/mainRoutes'); // homepage and general routes
+const bookingRoutes = require('./routes/bookingRoutes'); // service bookings
+const testimonialRoutes = require('./routes/testimonialRoutes'); // user testimonials
+const contactRoutes = require('./routes/contactRoutes'); // contact form
+const dashboardRoutes = require('./routes/dashboardRoutes'); // user dashboard
 
-app.use('/auth', authRoutes);
-app.use('/', mainRoutes);
-app.use('/booking', bookingRoutes);
-app.use('/testimonials', testimonialRoutes);
-app.use('/contact', contactRoutes);
-app.use('/dashboard', dashboardRoutes); 
+app.use('/auth', authRoutes); // mount at /auth
+app.use('/', mainRoutes); // base route
+app.use('/booking', bookingRoutes); // bookings
+app.use('/testimonials', testimonialRoutes); // testimonials
+app.use('/contact', contactRoutes); // contact
+app.use('/dashboard', dashboardRoutes); // dashboard
 
 // --- Redirect helper routes ---
-app.get('/book', (req, res) => res.redirect('/booking/book'));
-app.get('/register', (req, res) => res.redirect('/auth/register'));
+app.get('/book', (req, res) => res.redirect('/booking/book')); // shortcut for booking page
+app.get('/register', (req, res) => res.redirect('/auth/register')); // shortcut for register page
 
 // --- Redirect /logout to /auth/logout ---
 app.get('/logout', (req, res) => {
   res.redirect('/auth/logout');
 });
 
-// --- Start server ---
+// --- Start the server ---
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`No Bhad Dogs app running at http://localhost:${PORT}`);

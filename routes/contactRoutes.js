@@ -1,21 +1,13 @@
 // File: /routes/contactRoutes.js
 // Purpose: Defines routes for contact page with query submission
+// Notes:
+// - Delegates GET/POST to contactController to preserve flash/message functionality
 
 const express = require('express');
 const router = express.Router();
+const contactController = require('../controllers/contactController');
 
-router.get('/', (req, res) => {
-  res.render('contact', { user: req.session.user });
-});
-
-router.post('/', (req, res) => {
-  // Example: handle contact form submission
-  const { name, email, message } = req.body;
-
-  // TODO: Add logic to save the message, send email, or whatever is needed
-
-  req.flash('success', 'Your message has been sent. Thank you!');
-  res.redirect('/contact');
-});
+router.get('/', contactController.showContactForm);
+router.post('/', contactController.submitContactForm);
 
 module.exports = router;
