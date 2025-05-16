@@ -201,3 +201,42 @@ button:hover, input[type="submit"]:hover {
   font-style: italic;
   margin: 0;
 }
+
+/* Form styles */
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  color: var(--color-black);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form input[type="submit"] {
+  width: 100%;
+}

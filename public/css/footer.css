@@ -2,7 +2,7 @@
 /* Purpose:: footers styling */
 
 .site-footer {
-  background-color: var(--color-lapis-lazuli); /* match navbar and header bg */
+  background-color: var(--color-lapis-lazuli);
   color: var(--color-white);
   padding: 1.5rem 0;
   text-align: center;
@@ -12,7 +12,7 @@
 }
 
 .site-footer a {
-  color: var(--color-saffron); /* saffron links like buttons and nav greeting */
+  color: var(--color-saffron);
   text-decoration: none;
   margin: 0 0.3rem;
   transition: color 0.3s ease;
@@ -20,12 +20,7 @@
 
 .site-footer a:hover,
 .site-footer a:focus {
-  color: var(--color-fire-brick); /* consistent hover color with buttons */
+  color: var(--color-fire-brick);
   text-decoration: underline;
   outline: none;
-}
-
-.footer-contact,
-.footer-social {
-  margin-top: 0.5rem;
 }
