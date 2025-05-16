@@ -14,43 +14,29 @@
 
     <ul class="nav-menu">
       <% if (user) { %>
+        <!-- greeting replaces Home link inside nav menu -->
         <li>
           <a href="/dashboard" class="nav-user-name nav-link" title="Go to your dashboard" tabindex="3">
             Hello, <%= user.firstName %>
-          </a>          
+          </a>
+        </li>
+      <% } else { %>
+        <!-- show Home link here when no user -->
+        <li>
+          <a href="/" class="nav-user-name nav-link" tabindex="3">Home</a>
         </li>
       <% } %>
-      <li><a href="/" class="nav-link" tabindex="4">Home</a></li>
-      <li><a href="/about" class="nav-link" tabindex="5">About</a></li>
-      <li><a href="/halloffame" class="nav-link" tabindex="6">Hall of Fame</a></li>
-      <li><a href="/testimonials" class="nav-link" tabindex="7">Testimonials</a></li>
-      <li><a href="/contact" class="nav-link" tabindex="8">Contact</a></li>
+
+      <li><a href="/about" class="nav-link" tabindex="4">About</a></li>
+      <li><a href="/halloffame" class="nav-link" tabindex="5">Hall of Fame</a></li>
+      <li><a href="/testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
+      <li><a href="/contact" class="nav-link" tabindex="7">Contact</a></li>
+
       <% if (user) { %>
-        <li><a href="/auth/logout" class="nav-link" tabindex="9">Logout</a></li>
+        <li><a href="/auth/logout" class="nav-link" tabindex="8">Logout</a></li>
       <% } else { %>
-        <li><a href="/auth/login" class="nav-link" tabindex="9">Login</a></li>
+        <li><a href="/auth/login" class="nav-link" tabindex="8">Login</a></li>
       <% } %>
     </ul>
   </div>
 </nav>
-
-<script>
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  // Toggle nav menu open/close
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !expanded);
-    navMenu.classList.toggle('active');
-  });
-
-  // Close menu when any link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>

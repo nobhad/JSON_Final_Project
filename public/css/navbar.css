@@ -40,9 +40,9 @@
   flex-wrap: nowrap;
 }
 
-/* greeting link inside nav menu */
+/* greeting link - inside nav menu, styled distinctively */
 .nav-user-name {
-  color: var(--color-saffron) !important; /* force saffron from your CSS variable */
+  color: var(--color-saffron) !important; /* saffron */
   font-weight: 700;
   font-style: italic;
   text-decoration: underline;
@@ -50,7 +50,6 @@
   white-space: nowrap;
   transition: color 0.3s ease;
 }
-
 
 .nav-user-name:hover,
 .nav-user-name:focus {
@@ -133,10 +132,7 @@
     display: flex;
   }
 
-  .nav-link {
-    padding: 0.5rem 0;
-  }
-
+  .nav-link,
   .nav-user-name {
     padding: 0.5rem 0;
   }
