@@ -1,35 +1,104 @@
+<!-- 
+  File: /index.html
+  Project: Noelle_Bhaduri_JSON_Final_Project
+  Author: Noelle Bhaduri
+  Last Updated: 05/16/2025
+
+  Purpose: Homepage for No Bhad Dogs
+
+  Description:
+    - Introduces the site and services
+    - Includes navigation to all main pages
+    - Displays current weather using the Weather API
+    - Links to portfolio, services, and contact pages
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home - Noelle Bhaduri</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="weather.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Bhad Dogs</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
+
+  <!-- Stylesheets -->  
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/footer.css" />
+
+  <!-- Weather API -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/weather.js" defer></script>
+
 </head>
 <body>
-  <header>
-    <h1>Welcome to My Personal Website</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>Introduction</h2>
-      <p>This is the home page of my personal website.</p>
-      <img src="assets/home_image.jpg" alt="Home Image" />
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" tabindex="1">
+        <img src="assets/img/branding/logo.png" alt="No Bhad Dogs logo" class="logo-img" />
+        No Bhad Dogs
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" tabindex="2">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link" tabindex="3">Home</a></li>
+        <li><a href="pages/services.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="pages/portfolio.html" class="nav-link" tabindex="5">Hall of Fame</a></li>
+        <li><a href="pages/portfolio.html#testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
+        <li><a href="pages/contact.html" class="nav-link" tabindex="7">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>    
+    <!-- larger logo -->
+    <div style="text-align: center;">
+        <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
+    </div>  
+
+    <h1>Welcome to No Bhad Dogs</h1>
+    <p>Your trusted dog care service.</p>
+
+    <section class="weather">
+        <h2>🌤 Local Weather</h2>
+        <div class="container" id="weather-widget">
+          <img class="icon" alt="Weather icon" />
+          <p class="weather"></p>
+          <p class="temp"></p>
+        </div>
     </section>
-    <section id="weather">
-      <h2>Weather</h2>
-      <p id="weather-data">Loading...</p>
-    </section>
+      
   </main>
-  <footer>
-    <p>&copy; 2023 Noelle Bhaduri</p>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content container">
+      <p>&copy; <span id="year"></span> No Bhad Dogs. All rights reserved.</p>
+      <p><a href="pages/contact.html">Contact us</a> | Phone: (555) 123-4567</p>
+      <div class="footer-social">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/script.js" defer></script>
+  <script src="assets/js/weather.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const yearSpan = document.getElementById("year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
 </body>
 </html>
-

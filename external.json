@@ -1,5 +1,49 @@
+
 {
-    "hallOfFame": ["Project 1", "Project 2", "Project 3"],
-    "testimonials": ["Great work!", "Highly recommended!", "Amazing experience!"]
+    "hallOfFame": [
+      {
+        "name": "Arrow",
+        "breed": "Australian Cattle Dog Mix",
+        "image": "/assets/img/arrow1.jpg"
+      },
+      {
+        "name": "Arrow",
+        "breed": "G.O.A.T.",
+        "image": "/assets/img/arrow2.jpg"
+      },
+      {
+        "name": "Arrow",
+        "breed": "Ever Expanding Force of Love",
+        "image": "/assets/img/arrow3.jpg"
+      },
+      {
+        "name": "Peggy",
+        "breed": "Arizona Desert Dog",
+        "image": "/assets/img/peggy.jpg"
+      },
+      {
+        "name": "Stella",
+        "breed": "Arizona Desert Dog",
+        "image": "/assets/img/stella.jpg"
+      },
+      {
+        "name": "Sheena",
+        "breed": "Boston Terrier",
+        "image": "/assets/img/sheena.jpg"
+      }
+    ],
+    "testimonials": [
+      {
+        "title": "Great work!",
+        "content": "Noelle is amazing with dogs. My pup loves her!"
+      },
+      {
+        "title": "Highly recommended!",
+        "content": "Professional and caring. Couldn't ask for more."
+      },
+      {
+        "title": "Amazing experience!",
+        "content": "Our dog had the best time. Will definitely book again!"
+      }
+    ]
   }
-  

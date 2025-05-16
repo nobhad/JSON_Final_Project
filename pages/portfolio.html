@@ -1,32 +1,203 @@
+<!-- 
+  File: /pages/portfolio.html
+  Project: Noelle_Bhaduri_JSON_Final_Project
+  Author: Noelle Bhaduri
+  Last Updated: 05/16/2025
+
+  Purpose: Portfolio page combining Hall of Fame and Testimonials
+
+  Notes:
+  - Includes dog cards with images and names
+  - Includes testimonial cards with title, image, and content
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | No Bhad Dogs</title>
+
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
+
+  <!-- Stylesheets -->  
+  <link rel="icon" href="../assets/img/branding/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/footer.css" />
 </head>
 <body>
-  <header>
-    <h1>My Portfolio</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
- hall-of-fame">
-      <h2>Hall of Fame</h2>
-      <div id="hall-of-fame-content"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo" tabindex="1">
+        <img src="../assets/img/branding/logo.png" alt="No Bhad Dogs logo" class="logo-img" />
+        No Bhad Dogs
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" tabindex="2">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html" class="nav-link" tabindex="3">Home</a></li>
+        <li><a href="services.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="portfolio.html" class="nav-link" tabindex="5">Hall of Fame</a></li>
+        <li><a href="portfolio.html#testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link" tabindex="7">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>    
+    <!-- larger logo -->
+    <div style="text-align: center;">
+        <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
+    </div>  
+
+    <h1>No Bhad Dogs Hall of Fame 🐾</h1>
+    <div class="dog-grid">
+      <div class="dog-card">
+        <img src="../assets/img/arrow1.jpg" alt="Photo of Arrow" class="dog-image" />
+        <h2 class="dog-name">Arrow</h2>
+        <p class="dog-breed">Golden Retriever</p>
+      </div>
+      <div class="dog-card">
+        <img src="../assets/img/arrow2.jpg" alt="Photo of Arrow" class="dog-image" />
+        <h2 class="dog-name">Arrow</h2>
+        <p class="dog-breed">Golden Retriever</p>
+      </div>
+      <div class="dog-card">
+        <img src="../assets/img/arrow3.jpg" alt="Photo of Arrow" class="dog-image" />
+        <h2 class="dog-name">Arrow</h2>
+        <p class="dog-breed">Golden Retriever</p>
+      </div>
+      <div class="dog-card">
+        <img src="../assets/img/peggy.jpg" alt="Photo of Peggy" class="dog-image" />
+        <h2 class="dog-name">Peggy</h2>
+        <p class="dog-breed">Bulldog</p>
+      </div>
+      <div class="dog-card">
+        <img src="../assets/img/sheena.jpg" alt="Photo of Sheena" class="dog-image" />
+        <h2 class="dog-name">Sheena</h2>
+        <p class="dog-breed">Poodle</p>
+      </div>
+      <div class="dog-card">
+        <img src="../assets/img/stella.jpg" alt="Photo of Stella" class="dog-image" />
+        <h2 class="dog-name">Stella</h2>
+        <p class="dog-breed">Labrador</p>
+      </div>
+    </div>
+
+    <h1>Client Testimonials</h1>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <h2>Great Service!</h2>
+        <img src="../assets/img/placeholder.png" alt="Image for testimonial" class="testimonial-image" />
+        <div>We love No Bhad Dogs! They take great care of our pets.</div>
+      </div>
+      <div class="testimonial-card">
+        <h2>Highly Recommend</h2>
+        <img src="../assets/img/placeholder.png" alt="Image for testimonial" class="testimonial-image" />
+        <div>Professional and caring staff. Our dog loves them!</div>
+      </div>
+      <div class="testimonial-card">
+        <h2>Best Dog Care</h2>
+        <img src="../assets/img/placeholder.png" alt="Image for testimonial" class="testimonial-image" />
+        <div>Reliable and trustworthy. We couldn't be happier.</div>
+      </div>
+    </div>
+
+    <section id="testimonial-form-section">
+      <h2>Share Your Experience</h2>
+      <form id="testimonialForm" enctype="multipart/form-data">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+    
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+    
+        <label for="dogName">Dog's Name:</label>
+        <input type="text" id="dogName" name="dogName" required />
+    
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+    
+        <label for="image">Upload an Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" />
+    
+        <button type="submit">Submit Testimonial</button>
+      </form>
     </section>
-    <section id="testimonials">
-      <h2>Testimonials</h2>
-      <div id="testimonials-content"></div>
-    </section>
+    
   </main>
-  <footer>
-    <p>&copy; 2023 Noelle Bhaduri</p>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content container">
+      <p>&copy; <span id="year"></span> No Bhad Dogs. All rights reserved.</p>
+      <p><a href="contact.html">Contact us</a> | Phone: (555) 123-4567</p>
+      <div class="footer-social">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- Cards -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fetch data from /external.json
+      fetch('/external.json')
+        .then(response => response.json())
+        .then(data => {
+          const dogGrid = document.querySelector('.dog-grid');
+          const testimonialGrid = document.querySelector('.testimonial-grid');
+  
+          // Clear existing hardcoded content
+          dogGrid.innerHTML = '';
+          testimonialGrid.innerHTML = '';
+  
+          // Populate dogs
+          data.hallOfFame.forEach(dog => {
+            const dogCard = document.createElement('div');
+            dogCard.className = 'dog-card';
+            dogCard.innerHTML = `
+              <img src="${dog.image}" alt="Photo of ${dog.name}" class="dog-image" />
+              <h2 class="dog-name">${dog.name}</h2>
+              <p class="dog-breed">${dog.breed}</p>
+            `;
+            dogGrid.appendChild(dogCard);
+          });
+  
+          // Populate testimonials
+          data.testimonials.forEach(testimonial => {
+            const testimonialCard = document.createElement('div');
+            testimonialCard.className = 'testimonial-card';
+            testimonialCard.innerHTML = `
+              <h2>${testimonial.title}</h2>
+              <img src="../assets/img/placeholder.png" alt="Image for testimonial" class="testimonial-image" />
+              <div>${testimonial.content}</div>
+            `;
+            testimonialGrid.appendChild(testimonialCard);
+          });
+        });
+    });
+  </script>
+  
+
+  <!-- YEAR for copywrite -->
+  <script src="../assets/js/script.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const yearSpan = document.getElementById("year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
 </body>
 </html>

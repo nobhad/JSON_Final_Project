@@ -1,15 +1,34 @@
 ## Project Root (`/Noelle_Bhaduri_JSON_Final_Project`)
 
 Noelle_Bhaduri_JSON_Final_Project/
-├── index.html          ← Home page
-├── portfolio.html      ← Portfolio (Hall of Fame + Testimonials)
-├── contact.html        ← Contact form
-├── style.css           ← Shared CSS
-├── script.js           ← Shared JavaScript
-├── db.json             ← Stores contact form data
-├── weather.js          ← Weather API logic
-├── external.json       ← Simulated external JSON data
-└── assets/             ← Images and other media
+├── assets                 # Images and other media
+│ ├── css/                 # All CSS files for styling the site
+│ │ ├── footer.css         # Footer-specific styles
+│ │ ├── navbar.css         # Navbar-specific styles
+│ │ └── styles.css         # Shared/global CSS styles
+│ └── img/                 # Image assets used in the project
+│ │ ├── arrow1.jpg         # Hall of Fame Card 1
+│ │ ├── arrow2.jpg         # Hall of Fame Card 2
+│ │ ├── arrow3.jpg         # Hall of Fame Card 3
+│ │ ├── peggy.jpg          # Hall of Fame Card 4
+│ │ ├── sheena.jpg         # Hall of Fame Card 5
+│ │ └── stella.jpg         # Hall of Fame Card 6
+│ │ ├── branding/          # Project branding assets
+│ │ │  ├── logo.png        # Website logo displayed in the navbar
+│ │ │  └── fav-icon.ico    # Browser tab favicon
+│ └── js/                  # JavaScript functionality scripts
+│ │ ├── script.js          # Shared JavaScript (DOM interactions, UI logic)
+│ │ └── weather.js         # Weather API logic and data display
+│ └── pages/               # Internal pages linked from navigation
+│ │ ├── contact.html       # Contact form page (submits to db.json)
+│ │ ├── portfolio.html     # Portfolio section: Hall of Fame and Testimonials
+│ │ └── services.html      # Services offered by the subject or business
+├── .gitignore             # Specifies files/folders Git should ignore
+├── db.json                # Stores submitted contact form data (local JSON db)
+├── external.json          # Simulated external data (e.g., services, weather)
+├── index.html             # Main homepage for the site
+└── notes.md               # This project notes and documentation file
+
 
 
 
@@ -40,7 +59,7 @@ final/
 │ ├── css/
 │ │ ├── footer.css
 │ │ ├── navbar.css
-│ │ ├── styles.css
+│ │ └── styles.css
 │ ├── navbar.js
 │ └── img/
 │ └── logo.png
@@ -101,3 +120,4 @@ final/
 - Views are structured to separate concerns and reuse partials/layouts for consistent UI.
 - Routes and controllers are split by feature/module for maintainability.
 
+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

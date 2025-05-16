@@ -1,14 +1,14 @@
 <!-- 
-  File: /pages/contact.html
+  File: /pages/services.html
   Project: Noelle_Bhaduri_JSON_Final_Project
   Author: Noelle Bhaduri
   Last Updated: 05/16/2025
 
-  Purpose: Contact form page
+  Purpose: Services offered by No Bhad Dogs 
 
   Notes:
-  - Includes form for name, email, and message
-  - Styled with linked CSS and JS
+  - Personalized, experienced care
+  - Reflects mid-range Boston, MA pricing
 -->
 
 <!DOCTYPE html>
@@ -16,8 +16,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | No Bhad Dogs</title>
-
+  <title>Services | No Bhad Dogs</title>
+  
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
 
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="stylesheet" href="../assets/css/navbar.css" />
   <link rel="stylesheet" href="../assets/css/footer.css" />
+
 </head>
 <body>
 
@@ -47,35 +48,66 @@
         <li><a href="contact.html" class="nav-link" tabindex="7">Contact</a></li>
       </ul>
     </div>
-  </nav>
+  </nav> 
 
   <!-- Main Content -->
-  <main>
+  <main>    
     <!-- larger logo -->
     <div style="text-align: center;">
-      <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
-    </div>
-    
-    <h1>Contact Us</h1>
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+        <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
+    </div>  
+  
+    <h1>My Services</h1>
+    <p>Hi! I'm Noelle, the sole provider behind <strong>No Bhad Dogs</strong>. I offer personalized, experienced care for your pets — just like they’re my own. Whether you need a quick walk or overnight care, I’ve got you covered.</p>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+    <section>
+      <h2>🐶 Dog Sitting (Daytime Visits)</h2>
+      <ul>
+        <li>1 dog: $30 per 30-minute visit</li>
+        <li>Each additional dog: +$10</li>
+        <li>Includes feeding, potty break, playtime, and medication if needed</li>
+      </ul>
+    </section>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
+    <section>
+      <h2>🌙 Overnight Stays</h2>
+      <h3>In My Home</h3>
+      <ul>
+        <li>1 dog: $70 per night</li>
+        <li>Each additional dog: +$20</li>
+        <li>Includes evening and morning walks, feeding, and medication</li>
+      </ul>
 
-      <button type="submit">Submit</button>
-    </form>
+      <h3>In Your Home</h3>
+      <ul>
+        <li>1 dog: $85 per night</li>
+        <li>Each additional dog: +$20</li>
+        <li>Includes overnight stay, walks, feeding, and home care (mail, lights, etc.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🚶 Dog Walking (Local)</h2>
+      <ul>
+        <li>30-minute walk: $28 for 1 dog</li>
+        <li>Each additional dog: +$10</li>
+        <li>Includes water refill and quick check-in</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>💉 Medication Administration</h2>
+      <p>I have hands-on experience administering oral medications and injections, including insulin for diabetic dogs. This service is included at no extra charge.</p>
+    </section>
+
+    <p><em>All rates reflect mid-range Boston-area pricing and may vary slightly based on location, number of pets, and holiday bookings.</em></p>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content container">
       <p>&copy; <span id="year"></span> No Bhad Dogs. All rights reserved.</p>
-      <p><a href="contact.html">Contact us</a> | Phone: (555) 123-4567</p>
+      <p><a href="contact.html">Contact me</a> | Phone: (555) 123-4567</p>
       <div class="footer-social">
         <a href="#">Facebook</a> |
         <a href="#">Instagram</a> |

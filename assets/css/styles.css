@@ -1,5 +1,8 @@
 /* 
-  File: /public/css/style.css
+  File: /assets/css/style.css
+  Project: Noelle_Bhaduri_JSON_Final_Project
+  Author: Noelle Bhaduri
+  Last Updated: 05/16/2025
   Purpose: Base styles for No Bhad Dogs site, using Bice Blue as background
   Notes:
   - Includes general layout, typography, buttons, flash messages, footer styles
@@ -297,4 +300,22 @@ button.btn-edit,
 button.btn-delete {
   margin: 0;
   display: inline-block;
+}
+
+/* Weather widget styles */
+.weather .container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.weather .icon {
+  width: 60px;
+  height: 60px;
+}
+
+.weather .temp,
+.weather .weather {
+  font-size: 1.2rem;
 }
