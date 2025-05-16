@@ -25,6 +25,7 @@ final/
 ├── public/ # Public assets served statically (CSS, JS, images)
 │ ├── css/
 │ │ ├── footer.css
+│ │ ├── navbar.css
 │ │ ├── styles.css
 │ ├── navbar.js
 │ └── img/

@@ -1,5 +1,10 @@
-/* File: /public/css/style.css */
-/* Purpose: Base styles for No Bhad Dogs site, using Bice Blue as background */
+/* 
+  File: /public/css/style.css
+  Purpose: Base styles for No Bhad Dogs site, using Bice Blue as background
+  Notes:
+  - Includes general layout, typography, buttons, flash messages, footer styles
+  - Does NOT include navbar styles (separated for clarity)
+*/
 
 :root {
   --color-black: #000101;
@@ -50,13 +55,6 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-nav ul li {
-  font-weight: 600;
 }
 
 main {
@@ -108,111 +106,4 @@ button:hover, input[type="submit"]:hover {
   color: #721c24;
 }
 
-/* navbar styles */
 
-.navbar {
-  background-color: #2b6e97; /* bice blue */
-  color: white;
-  padding: 0.5rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.nav-logo {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #f8cd32; /* saffron accent */
-}
-
-/* Hamburger styles */
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  display: block;
-  background-color: white;
-  height: 3px;
-  width: 25px;
-  border-radius: 2px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  position: absolute;
-  left: 0;
-}
-
-.hamburger::before {
-  top: -8px;
-}
-
-.hamburger::after {
-  top: 8px;
-}
-
-/* Responsive navbar styles */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #2b6e97;
-    width: 100%;
-    max-width: 250px;
-    flex-direction: column;
-    display: none;
-    padding: 1rem;
-    border-radius: 0 0 0 8px;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-link {
-    padding: 0.5rem 0;
-  }
-}

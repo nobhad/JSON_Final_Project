@@ -9,6 +9,7 @@
 const Booking = require('../models/Booking');
 const Testimonial = require('../models/Testimonial');
 
+
 exports.getDashboard = async (req, res) => {
   try {
     const userId = req.session.user._id; 
@@ -17,7 +18,13 @@ exports.getDashboard = async (req, res) => {
     const bookings = await Booking.find({ user: userId }).lean();
     const testimonials = await Testimonial.find({ user: userId }).lean();
 
-    res.render('dashboard/dashboard', { bookings, testimonials, title: 'Dashboard' });
+    res.render('dashboard/dashboard', { 
+      bookings, 
+      testimonials, 
+      title: 'Dashboard',
+      user: req.session.user,        
+      isDashboard: true              
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');

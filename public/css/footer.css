@@ -1,25 +1,31 @@
+/* File: /public/css/footer.css */
+/* Purpose:: footers styling */
+
 .site-footer {
-    background-color: #222;
-    color: #eee;
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 3rem;
-  }
-  
-  .site-footer a {
-    color: #58a6ff;
-    text-decoration: none;
-    margin: 0 0.3rem;
-  }
-  
-  .site-footer a:hover,
-  .site-footer a:focus {
-    text-decoration: underline;
-  }
-  
-  .footer-contact,
-  .footer-social {
-    margin-top: 0.5rem;
-  }
-  
+  background-color: var(--color-lapis-lazuli); /* match navbar and header bg */
+  color: var(--color-white);
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  flex-shrink: 0;
+}
+
+.site-footer a {
+  color: var(--color-saffron); /* saffron links like buttons and nav greeting */
+  text-decoration: none;
+  margin: 0 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--color-fire-brick); /* consistent hover color with buttons */
+  text-decoration: underline;
+  outline: none;
+}
+
+.footer-contact,
+.footer-social {
+  margin-top: 0.5rem;
+}

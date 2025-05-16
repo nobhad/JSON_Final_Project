@@ -1,0 +1,143 @@
+/*
+  File: /public/css/navbar.css
+  Purpose: Navigation bar specific styles for No Bhad Dogs site
+*/
+
+.navbar {
+  background-color: #2b6e97; /* bice blue */
+  color: white;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* site logo */
+.nav-logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* nav menu container */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* greeting link inside nav menu */
+.nav-user-name {
+  color: var(--color-saffron) !important; /* force saffron from your CSS variable */
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+
+.nav-user-name:hover,
+.nav-user-name:focus {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+
+/* other nav links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f8cd32;
+}
+
+.nav-menu li {
+  font-weight: 600;
+}
+
+/* hamburger button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  background-color: white;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #2b6e97;
+    width: 100%;
+    max-width: 250px;
+    flex-direction: column;
+    display: none;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+  }
+
+  .nav-user-name {
+    padding: 0.5rem 0;
+  }
+}
