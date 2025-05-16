@@ -14,6 +14,10 @@
   --color-fire-brick: #b11e23;
   --color-white: #fff;
   --color-light-blue: #9cc8e3;
+
+  /* Added flash message background colors */
+  --color-flash-error-bg: #b11e23; /* fire brick red */
+  --color-flash-success-bg: #2b6e97; /* bice blue */
 }
 
 * {
@@ -88,22 +92,112 @@ button:hover, input[type="submit"]:hover {
   100% { opacity: 0; transform: translateY(-10px); }
 }
 
+/* Flash message base */
 .flash {
-  margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 4px;
+  margin-bottom: 1em;
+  padding: 10px;
+  border-radius: 5px;
   font-weight: 600;
+  color: var(--color-white);
   animation: fadeInOut 5s ease forwards;
 }
 
-.flash.success {
-  background-color: #d4edda;
-  color: #155724;
-}
-
+/* Error flash */
 .flash.error {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--color-flash-error-bg);
+}
+
+/* Success flash */
+.flash.success {
+  background-color: var(--color-flash-success-bg);
+}
+
+/* Testimonials grid styles similar to Hall of Fame */
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.testimonial-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  color: var(--color-bice-blue);
+}
+
+.testimonial-image {
+  width: 100%;       
+  height: auto;      
+  object-fit: contain; 
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 
+/* Link styled as button */
+.btn-link {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: var(--color-saffron);
+  color: var(--color-black);
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  background-color: var(--color-fire-brick);
+  color: var(--color-white);
+  outline: none;
+}
+
+/* Hall of Fame styles for reference */
+
+.dog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.dog-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.dog-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.dog-name {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 1.25rem;
+}
+
+.dog-breed {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}

@@ -11,14 +11,14 @@
   <h1>Client Testimonials</h1>
 
   <% if (testimonials && testimonials.length > 0) { %>
-    <div class="testimonial-list">
+    <div class="testimonial-grid">
       <% testimonials.forEach(testimonial => { %>
-        <div class="testimonial-item">
+        <div class="testimonial-card">
           <h2><%= testimonial.title %></h2>
           <% if (testimonial.image) { %>
-            <img src="/uploads/<%= testimonial.image %>" alt="Image for testimonial" width="200" />
-          <% } %>   
-          <div><%- testimonial.content %></div>       
+            <img src="/uploads/<%= testimonial.image %>" alt="Image for testimonial" class="testimonial-image" />
+          <% } %>
+          <div><%- testimonial.content %></div>
         </div>
       <% }) %>
     </div>
@@ -27,19 +27,6 @@
   <% } %>
 
   <% if (user) { %>
-    <a href="/testimonials/new">Leave a Testimonial</a>
+    <a href="/testimonials/new" class="btn-link">Leave a Testimonial</a>
   <% } %>
 </main>
-
-<style>
-  /* remove bullet styling */
-  .testimonial-list {
-    padding: 0;
-    margin: 0;
-  }
-  .testimonial-item {
-    margin-bottom: 2em;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 1em;
-  }
-</style>
