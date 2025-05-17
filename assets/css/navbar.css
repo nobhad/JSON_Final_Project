@@ -6,6 +6,17 @@
   Purpose: Navigation bar specific styles for No Bhad Dogs site
 */
 
+
+:root {
+  --color-black: #000101;
+  --color-bice-blue: #2b6e97;
+  --color-saffron: #eebe08;
+  --color-lapis-lazuli: #0f628d;
+  --color-fire-brick: #b11e23;
+  --color-white: #fff;
+  --color-light-blue: #9cc8e3;
+}
+
 .navbar {
   background-color: #2b6e97; /* bice blue */
   color: white;
@@ -122,7 +133,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: #2b6e97;
+    background-color: #b11e23;
     width: 100%;
     max-width: 250px;
     flex-direction: column;

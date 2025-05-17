@@ -115,41 +115,6 @@ button:hover, input[type="submit"]:hover {
   background-color: var(--color-flash-success-bg);
 }
 
-/* Testimonials grid styles similar to Hall of Fame */
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 0;
-  margin: 0;
-}
-
-.testimonial-card {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  padding: 1rem;
-  color: #000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.testimonial-card h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.25rem;
-  color: var(--color-bice-blue);
-}
-
-.testimonial-image {
-  width: 100%;       
-  height: auto;      
-  object-fit: contain; 
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  display: block;
-}
-
 
 /* Link styled as button */
 .btn-link {
@@ -245,19 +210,6 @@ form input[type="submit"] {
 }
 
 
-/* Container for testimonial buttons */
-.testimonial-actions {
-  margin-top: auto; /* push buttons to bottom if card grows */
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-start;
-}
-
-/* Reset default form inline styling spacing */
-.testimonial-actions form {
-  margin: 0;
-  padding: 0;
-}
 
 /* Edit button styled similarly to delete but with different color */
 .btn-edit {

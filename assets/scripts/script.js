@@ -1,24 +1,27 @@
 /* 
-  File: /assets/js/weather.js
+  File: /assets/scripts/script.js
   Project: Noelle_Bhaduri_JSON_Final_Project
   Author: Noelle Bhaduri
   Last Updated: 05/16/2025
 
-  Purpose:
-    - Fetches and displays current weather data for Boston, MA
-    - Uses OpenWeatherMap API (Module 9 example)
-    - Injects weather icon, condition, and temperature into the homepage
-
-  Requirements:
-    - jQuery 3.3.1 or later
-    - Internet connection to fetch live API data
-
-  Notes:
-    - Weather data is displayed in the #weather-widget container
-    - API key should be kept secure in production environments
 */
 
+/* nav toggle */
+document.addEventListener("DOMContentLoaded", function () {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
+  navToggle.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+    navToggle.setAttribute(
+      "aria-expanded",
+      navMenu.classList.contains("active")
+    );
+  });
+});
+
+
+/* contact form */
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contact-form");
     if (form) {
@@ -45,3 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
   
+/* footer */
+document.addEventListener("DOMContentLoaded", () => {
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+});

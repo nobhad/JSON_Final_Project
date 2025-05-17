@@ -1,0 +1,149 @@
+/* 
+  File: assets/css/testimonials.css
+  Project: Noelle_Bhaduri_JSON_Final_Project
+  Author: Noelle Bhaduri
+  Last Updated: 05/16/2025
+  Purpose: Testimonals page specific styles for No Bhad Dogs site
+ */
+
+main h1 {
+    text-align: center;
+  }
+  
+
+/* container for testimonial cards */
+#testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+
+/* each testimonial card styling */
+.testimonial-card {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1em;
+    max-width: 320px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.testimonial-image {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 1em;
+    display: block;
+    object-fit: cover;
+    height: 150px;
+    width: 100%;
+}
+
+.testimonial-message {
+    font-style: italic;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.testimonial-footer {
+    font-size: 0.9em;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
+.testimonial-footer .author {
+    font-weight: bold;
+}
+
+.testimonial-footer .dogs {
+    font-style: italic;
+    color: #555;
+}
+
+.testimonial-footer .date-posted {
+    color: #999;
+}
+
+/* form styling */
+#testimonialForm {
+    background: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#testimonialForm h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #222;
+}
+
+#testimonialForm label {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+    font-weight: 600;
+}
+
+#testimonialForm input[type="text"],
+#testimonialForm textarea,
+#testimonialForm input[type="file"] {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#testimonialForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#testimonialForm button[type="submit"] {
+    margin-top: 1.5em;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#testimonialForm button[type="submit"]:hover {
+    background-color: #005a9e;
+}
+
+/* Flash message styles */
+#testimonialMessage {
+    margin-top: 1em;
+    text-align: center;
+    font-weight: bold;
+    min-height: 1.2em;
+}
+
+#testimonialMessage.error {
+    color: #d93025;
+}
+
+#testimonialMessage.success {
+    color: #188038;
+}
+
+.testimonial-footer,
+.testimonial-footer .author,
+.testimonial-footer .date-posted {
+    background-color: transparent !important;
+}

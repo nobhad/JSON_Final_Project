@@ -1,0 +1,110 @@
+<!-- 
+  File: /pages/testimonials.html
+  Project: Noelle_Bhaduri_JSON_Final_Project
+  Author: Noelle Bhaduri
+  Last Updated: 05/16/2025
+
+  Purpose: Client Testimonials page
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimonials | No Bhad Dogs</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/footer.css" />
+  <link rel="stylesheet" href="../assets/css/testimonials.css" />
+  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo" tabindex="1">
+        <img src="../assets/img/branding/logo.png" alt="No Bhad Dogs logo" class="logo-img" />
+        No Bhad Dogs
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" tabindex="2">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html" class="nav-link" tabindex="3">Home</a></li>
+        <li><a href="about.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="services.html" class="nav-link" tabindex="5">Services</a></li>
+        <li><a href="halloffame.html" class="nav-link" tabindex="6">Hall of Fame</a></li>
+        <li><a href="testimonials.html" class="nav-link" tabindex="7">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link" tabindex="8">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div style="text-align: center; margin-bottom: 1em;">
+      <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto;" />
+    </div>
+
+    <h1>Client Testimonials</h1>
+     <button id="goToFormBtn" aria-label="Add your testimonial"
+        style="margin: 1em auto; display: block; cursor: pointer;">
+        Add Your Testimonial
+    </button>
+
+
+    <section id="testimonials-container" aria-live="polite" aria-relevant="additions">
+      <!-- Testimonials will be inserted here -->
+    </section>
+
+    <!-- Form at bottom -->
+    <form id="testimonialForm" novalidate style="margin-top: 3em;">
+      <h2>Add Your Testimonial</h2>
+      
+      <label for="firstName">First Name *</label>
+      <input type="text" id="firstName" name="firstName" required />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" />
+
+      <label for="dogName">Dog Name(s) *</label>
+      <input type="text" id="dogName" name="dogName" required />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <label for="image">Upload Image (optional, jpg/png, max 2MB)</label>
+      <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="testimonialMessage" role="alert" aria-live="assertive"></div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 No Bhad Dogs</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../assets/scripts/scripts.js"></script>
+  <script src="../assets/scripts/testimonials.js"></script>
+
+  <script>
+    // Scroll button functionality
+    document.getElementById('goToFormBtn').addEventListener('click', () => {
+      document.getElementById('testimonialForm').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('firstName').focus();
+    });
+  </script>
+
+</body>
+</html>

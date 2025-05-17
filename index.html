@@ -21,17 +21,20 @@
   <title>No Bhad Dogs</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
+  <link rel="icon" href="assets/img/branding/fav-icon.ico" type="image/x-icon" />
 
   <!-- Stylesheets -->  
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/footer.css" />
 
-  <!-- Weather API -->
+  <!-- jQuery for Weather API -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="assets/js/weather.js" defer></script>
+  <script src="assets/scripts/weather.js" defer></script>
 
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -47,10 +50,11 @@
       </button>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link" tabindex="3">Home</a></li>
-        <li><a href="pages/services.html" class="nav-link" tabindex="4">About</a></li>
-        <li><a href="pages/portfolio.html" class="nav-link" tabindex="5">Hall of Fame</a></li>
-        <li><a href="pages/portfolio.html#testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
-        <li><a href="pages/contact.html" class="nav-link" tabindex="7">Contact</a></li>
+        <li><a href="pages/about.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="pages/services.html" class="nav-link" tabindex="5">Services</a></li>
+        <li><a href="pages/halloffame.html" class="nav-link" tabindex="6">Hall of Fame</a></li>
+        <li><a href="pages/testimonials.html" class="nav-link" tabindex="7">Testimonials</a></li>
+        <li><a href="pages/contact.html" class="nav-link" tabindex="8">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -59,21 +63,23 @@
   <main>    
     <!-- larger logo -->
     <div style="text-align: center;">
-        <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
+      <img src="assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
     </div>  
 
     <h1>Welcome to No Bhad Dogs</h1>
     <p>Your trusted dog care service.</p>
 
-    <section class="weather">
-        <h2>🌤 Local Weather</h2>
-        <div class="container" id="weather-widget">
-          <img class="icon" alt="Weather icon" />
-          <p class="weather"></p>
-          <p class="temp"></p>
-        </div>
+    <section class="weather-section">
+      <h2>🌤 Local Weather</h2>
+      <div class="container" id="weather-widget">
+        <img class="icon" alt="Weather icon" />
+        <p class="weather"></p>
+        <p class="temp"></p>
+        <p class="snow"></p>
+      </div>
+      <div id="weather-warning" style="color: red; font-weight: bold;"></div>
+      <div id="weather-map" style="width: 100%; height: 500px;"></div>
     </section>
-      
   </main>
 
   <!-- Footer -->
@@ -90,15 +96,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/script.js" defer></script>
-  <script src="assets/js/weather.js" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const yearSpan = document.getElementById("year");
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
-    });
-  </script>
+  <script src="assets/scripts/script.js" defer></script>
+
 </body>
 </html>

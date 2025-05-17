@@ -7,7 +7,7 @@
   Purpose: Contact form page
 
   Notes:
-  - Includes form for name, email, and message
+  - Includes form for name, email, phone, and message
   - Styled with linked CSS and JS
 -->
 
@@ -15,8 +15,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | No Bhad Dogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Noelle_Bhaduri_JSON_Final_Project</title>
 
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
@@ -41,58 +41,76 @@
       </button>
       <ul class="nav-menu">
         <li><a href="../index.html" class="nav-link" tabindex="3">Home</a></li>
-        <li><a href="services.html" class="nav-link" tabindex="4">About</a></li>
-        <li><a href="portfolio.html" class="nav-link" tabindex="5">Hall of Fame</a></li>
-        <li><a href="portfolio.html#testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
-        <li><a href="contact.html" class="nav-link" tabindex="7">Contact</a></li>
+        <li><a href="about.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="services.html" class="nav-link" tabindex="5">Services</a></li>
+        <li><a href="halloffame.html" class="nav-link" tabindex="6">Hall of Fame</a></li>
+        <li><a href="testimonials.html" class="nav-link" tabindex="7">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link" tabindex="8">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Main Content -->
   <main>
-    <!-- larger logo -->
-    <div style="text-align: center;">
-      <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
-    </div>
-    
     <h1>Contact Us</h1>
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+    <!-- Flash message container -->
+    <div id="flash-message" class="flash" style="display:none;"></div>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
+    <form id="contact-form" novalidate>
+      <label for="name">Name <sup>*</sup></label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        minlength="2"
+        maxlength="50"
+        title="Please enter your name (2-50 characters)."
+        placeholder="Your full name"
+      />
 
-      <button type="submit">Submit</button>
+      <label for="phone">Phone</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        pattern="^\+?[0-9\s\-]{7,15}$"
+        title="Enter a valid phone number (digits, spaces, dashes allowed)."
+        placeholder="+1 555 555 5555"
+      />
+
+      <label for="email">Email <sup>*</sup></label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        title="Please enter a valid email address."
+        placeholder="you@example.com"
+      />
+
+      <label for="message">Message <sup>*</sup></label>
+      <textarea
+        id="message"
+        name="message"
+        required
+        minlength="10"
+        maxlength="500"
+        title="Please enter your message (10-500 characters)."
+        placeholder="Write your message here"
+      ></textarea>
+
+      <button type="submit">Send Message</button>
     </form>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content container">
-      <p>&copy; <span id="year"></span> No Bhad Dogs. All rights reserved.</p>
-      <p><a href="contact.html">Contact us</a> | Phone: (555) 123-4567</p>
-      <div class="footer-social">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
-      </div>
-    </div>
+  <footer>
+    <p>&copy; <span id="year"></span> Noelle Bhaduri JSON Final Project</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../assets/js/script.js" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const yearSpan = document.getElementById("year");
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
-    });
-  </script>
+  <script src="/assets/scripts/script.js" defer></script>
+  <script src="/assets/scripts/contact.js" defer></script>
 </body>
 </html>

@@ -42,10 +42,11 @@
       </button>
       <ul class="nav-menu">
         <li><a href="../index.html" class="nav-link" tabindex="3">Home</a></li>
-        <li><a href="services.html" class="nav-link" tabindex="4">About</a></li>
-        <li><a href="portfolio.html" class="nav-link" tabindex="5">Hall of Fame</a></li>
-        <li><a href="portfolio.html#testimonials" class="nav-link" tabindex="6">Testimonials</a></li>
-        <li><a href="contact.html" class="nav-link" tabindex="7">Contact</a></li>
+        <li><a href="about.html" class="nav-link" tabindex="4">About</a></li>
+        <li><a href="services.html" class="nav-link" tabindex="5">Services</a></li>
+        <li><a href="halloffame.html" class="nav-link" tabindex="6">Hall of Fame</a></li>
+        <li><a href="testimonials.html" class="nav-link" tabindex="7">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-link" tabindex="8">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -113,24 +114,56 @@
     <section id="testimonial-form-section">
       <h2>Share Your Experience</h2>
       <form id="testimonialForm" enctype="multipart/form-data">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required />
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required />
     
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required />
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required />
     
-        <label for="dogName">Dog's Name:</label>
-        <input type="text" id="dogName" name="dogName" required />
+      <label for="dogName">Dog's Name:</label>
+      <input type="text" id="dogName" name="dogName" required />
     
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
     
-        <label for="image">Upload an Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" />
+      <label for="image">Upload an Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" />
     
-        <button type="submit">Submit Testimonial</button>
+      <button type="submit">Submit Testimonial</button>
       </form>
     </section>
+
+    <script>
+      document.getElementById('testimonialForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const dogName = document.getElementById('dogName').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Restrict scripts in input fields
+      const scriptPattern = /<\s*script.*?>.*?<\s*\/\s*script\s*>/gi;
+
+      if (
+        scriptPattern.test(firstName) ||
+        scriptPattern.test(lastName) ||
+        scriptPattern.test(dogName) ||
+        scriptPattern.test(message)
+      ) {
+        alert('Scripts are not allowed in the input fields.');
+        return;
+      }
+
+      if (!firstName || !lastName || !dogName || !message) {
+        alert('All fields are required.');
+        return;
+      }
+
+      alert('Form submitted successfully!');
+      // Add further form submission logic here (e.g., send data to the server)
+      });
+    </script>
     
   </main>
 

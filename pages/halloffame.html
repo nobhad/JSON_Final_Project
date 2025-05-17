@@ -1,27 +1,23 @@
 <!-- 
-  File: /pages/services.html
+  File: /pages/halloffame.html
   Project: Noelle_Bhaduri_JSON_Final_Project
   Author: Noelle Bhaduri
-  Last Updated: 05/16/2025
+  Last Updated: 05/17/2025
 
-  Purpose: About the provider behind No Bhad Dogs
-
-  Notes:
-  - Highlights personal experience and passion for dog care
+  Purpose: Hall of Fame page showing dog cards
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | No Bhad Dogs</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hall of Fame | No Bhad Dogs</title>
+
   <!-- Favicon -->
   <link rel="icon" href="../assets/img/branding/fav-icon.ico" type="image/x-icon" />
 
-  <!-- Stylesheets -->  
-  <link rel="icon" href="../assets/img/branding/logo.png" type="image/x-icon" />
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="stylesheet" href="../assets/css/navbar.css" />
   <link rel="stylesheet" href="../assets/css/footer.css" />
@@ -50,44 +46,59 @@
   </nav>
 
   <!-- Main Content -->
-  <main>    
-    <!-- larger logo -->
+  <main role="main">    
     <div style="text-align: center;">
-        <img src="/assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
-    </div>  
+      <img src="../assets/img/branding/logo.png" alt="No Bhad Dogs Logo" style="max-width: 200px; height: auto; margin-bottom: 1em;" />
+    </div>
 
-    <h1>About Me</h1>
-    <p>Hello! I’m Noelle Bhaduri, the heart and hands behind <strong>No Bhad Dogs</strong>. I’ve been working professionally in pet care since 2015, but my journey with dogs began long before that.</p>
-
-    <p>With over <strong>30 years of personal experience</strong> caring for dogs of all breeds, sizes, and temperaments, I bring a deep understanding of canine behavior, needs, and personalities. Whether it’s a high-energy pup or a senior dog needing special attention, I tailor my care to each dog’s unique needs.</p>
-
-    <p>My services are grounded in compassion, reliability, and trust. I’ve built lasting relationships with both pets and their people, and I take pride in being someone you can count on — whether for a daily walk, an overnight stay, or administering medications with care and confidence.</p>
-
-    <p>Thank you for considering me to care for your furry family members. I look forward to meeting you and your dog!</p>
+    <h1>No Bhad Dogs Hall of Fame 🐾</h1>
+    <div class="dog-grid" aria-label="Hall of Fame Dogs">
+      <!-- dog cards will be dynamically loaded here -->
+    </div>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content container">
       <p>&copy; <span id="year"></span> No Bhad Dogs. All rights reserved.</p>
-      <p><a href="contact.html">Contact me</a> | Phone: (555) 123-4567</p>
+      <p><a href="contact.html">Contact us</a> | Phone: (555) 123-4567</p>
       <div class="footer-social">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
+        <a href="#" aria-label="Facebook">Facebook</a> |
+        <a href="#" aria-label="Instagram">Instagram</a> |
+        <a href="#" aria-label="Twitter">Twitter</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="../assets/js/script.js" defer></script>
+  <!-- Load Hall of Fame dogs and set copyright year -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Load dog cards
+      fetch('/external.json')
+        .then(response => response.json())
+        .then(data => {
+          const dogGrid = document.querySelector('.dog-grid');
+          dogGrid.innerHTML = '';
+          data.hallOfFame.forEach(dog => {
+            const dogCard = document.createElement('div');
+            dogCard.className = 'dog-card';
+            dogCard.innerHTML = `
+              <img src="${dog.image}" alt="Photo of ${dog.name}" class="dog-image" />
+              <h2 class="dog-name">${dog.name}</h2>
+              <p class="dog-breed">${dog.breed}</p>
+            `;
+            dogGrid.appendChild(dogCard);
+          });
+        });
+
+      // Set current year
       const yearSpan = document.getElementById("year");
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
     });
   </script>
+
+  <script src="../assets/js/script.js" defer></script>
 </body>
 </html>
